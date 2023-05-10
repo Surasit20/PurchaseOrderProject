@@ -1,0 +1,74 @@
+﻿@page "/create-order"
+@inject IOrderService OrderService
+@using Frontend.Services.OrderService;
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Grids
+@using System.Dynamic
+
+<h3>CreateOrder</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <label>ชื่อลูกค้า</label>
+            <SfTextBox Placeholder='ชื่อลูกค้า' ></SfTextBox>
+            <label>ข้อมูลลูกค้า</label>
+            <SfTextBox Placeholder='รายละเอียดที่อยู่' ></SfTextBox>
+            <SfTextBox Placeholder='รหัสไปรษณีย์' ></SfTextBox>
+            <SfTextBox Placeholder='เลขประจำตัวผู้เสียภาษี' ></SfTextBox>
+            <SfTextBox Placeholder='สำนักงาน/สาขาเลขที่'></SfTextBox>
+        </div>
+        <div class="col">
+           
+        </div>
+        <div class="col">
+            <p>จำนวนเงินทั้งสิ้น</p>
+            <p>1,340.00</p>
+            
+            <label>วันที่</label>
+            <SfDatePicker TValue="DateTime?" @bind-Value="@DateValue"></SfDatePicker>
+            <label>พนักงานขาย</label>
+            <SfTextBox Placeholder='ชื่อพนักงานขาย'></SfTextBox>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@orderItem" AllowPaging="true" Toolbar="@ToolbarItems">
+        <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
+
+        <GridColumns>
+            <GridColumn AllowAdding="false" IsPrimaryKey="true" Field=@nameof(OrderItem.Name) HeaderText="ลำดับ" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(OrderItem.Name) HeaderText="ชื่อสินค้า" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(OrderItem.Description) HeaderText="รายละเอียด" Width="300"></GridColumn>
+            <GridColumn Field=@nameof(OrderItem.Quantity) HeaderText="จำนวน" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(OrderItem.Unit) HeaderText="หน่วย" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(OrderItem.Price) HeaderText="ราคาต่อหน่วย" Width="150"></GridColumn>
+            <GridColumn AllowAdding="false"  Field=@nameof(OrderItem.TotalPrice) HeaderText="ราคารวม" Width="150"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+</div>
+@code {
+
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+    public List<ExpandoObject> Orders { get; set; } = new List<ExpandoObject>();
+    private List<string> ToolbarItems = new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" };
+    private int count = 0;
+
+    protected override void OnInitialized()
+    {
+        
+
+    }
+    public List<OrderItemDTO> orderItemDTO { get; set; }
+    public List<OrderItem> orderItem { get; set; }
+   
+    public class OrderItemDTO
+    {
+
+        public string? Name { get; set; }
+
+    }
+
+
+}

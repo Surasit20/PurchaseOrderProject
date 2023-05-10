@@ -11,15 +11,18 @@ namespace Shared
     {
         public int Id { get; set; }
         public string Purchaser { get; set; }
-
+       // public Supplier Supplier { get; set; }
         public DateTime OrderDateBegin { get; set; }
         public DateTime OrderDateDue { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalPrice { get; set; }
-        public List<OrderItem> OrderItems { get; set; }
+        [NotMapped]
+       // public List<OrderItem> OrderItems { get; set; }
         public int Vat { get; set; }
         public int Discount { get; set; }
-     
+        public int Status { get; set; }
+       
+
     }
 }

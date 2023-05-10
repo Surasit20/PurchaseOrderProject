@@ -1,8 +1,0 @@
-C:\Users\dev01\source\repos\PurchaseOrderProject\PurchaseOrderProject\obj\Debug\net6.0\Frontend.csproj.AssemblyReference.cache
-C:\Users\dev01\source\repos\PurchaseOrderProject\PurchaseOrderProject\obj\Debug\net6.0\Frontend.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\dev01\source\repos\PurchaseOrderProject\PurchaseOrderProject\obj\Debug\net6.0\Frontend.AssemblyInfoInputs.cache
-C:\Users\dev01\source\repos\PurchaseOrderProject\PurchaseOrderProject\obj\Debug\net6.0\Frontend.AssemblyInfo.cs
-C:\Users\dev01\source\repos\PurchaseOrderProject\PurchaseOrderProject\obj\Debug\net6.0\Frontend.csproj.CoreCompileInputs.cache
-C:\Users\dev01\source\repos\PurchaseOrderProject\PurchaseOrderProject\obj\Debug\net6.0\Frontend.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\dev01\source\repos\PurchaseOrderProject\PurchaseOrderProject\obj\Debug\net6.0\Frontend.RazorAssemblyInfo.cache
-C:\Users\dev01\source\repos\PurchaseOrderProject\PurchaseOrderProject\obj\Debug\net6.0\Frontend.RazorAssemblyInfo.cs
