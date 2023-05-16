@@ -2,6 +2,8 @@
 using Backend.Services.OrderService;
 using Microsoft.AspNetCore.Mvc;
 using Shared;
+using System;
+using System.Xml.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,10 +23,11 @@ namespace Backend.Controllers
 
 
         // POST api/<OrderController>
-        [HttpPost]
-        public async Task<ActionResult<ServiceResponse<bool>>> AddOrder(Order order)
+        [HttpPost("add-order")]
+        public async Task<ActionResult<ServiceResponse<int>>> AddOrder(Order order)
         {
-            var response = await _orderService.AddOrder(order);
+
+            ServiceResponse<int> response  = await _orderService.AddOrder(order);
             if (!response.Success) 
             {
                 return BadRequest(response);
@@ -33,13 +36,40 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        // GET: api/<OrderController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+    
+        [HttpPost("add-order-item")]
+        public async Task<ActionResult<ServiceResponse<int>>> AddOrderItems(List<OrderItem> orderItem)
         {
-            return new string[] { "value1", "value2" };
-        }
 
+             await _orderService.AddOrderItems(orderItem);
+          
+            return Ok();
+        }
+        // GET: api/<OrderController>
+        [HttpGet("product")]
+
+        public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProduct()
+        {
+            var response = await _orderService.GetProducts();
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
+        [HttpGet("order/{orderId}")]
+
+        public async Task<ActionResult<ServiceResponse<Order>>> GetOrder(int orderId)
+        {
+            var response = await _orderService.GetOrder(orderId);
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
         // GET api/<OrderController>/5
         [HttpGet("{id}")]
         public string Get(int id)

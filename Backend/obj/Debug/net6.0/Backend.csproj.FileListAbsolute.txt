@@ -87,3 +87,4 @@ C:\Users\dev01\source\repos\PurchaseOrderProject\Backend\obj\Debug\net6.0\refint
 C:\Users\dev01\source\repos\PurchaseOrderProject\Backend\obj\Debug\net6.0\Backend.pdb
 C:\Users\dev01\source\repos\PurchaseOrderProject\Backend\obj\Debug\net6.0\Backend.genruntimeconfig.cache
 C:\Users\dev01\source\repos\PurchaseOrderProject\Backend\obj\Debug\net6.0\ref\Backend.dll
+C:\Users\dev01\source\repos\PurchaseOrderProject\Backend\bin\Debug\net6.0\Newtonsoft.Json.dll

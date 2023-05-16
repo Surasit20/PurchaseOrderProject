@@ -4,6 +4,10 @@ namespace Backend.Services.OrderService
 {
     public interface IOrderService
     {
-        Task<ServiceResponse<bool>> AddOrder(Order order);
+        Task<ServiceResponse<int>>  AddOrder(Order order);
+        Task<ServiceResponse<Order>> GetOrder(int orderId);
+        Task  AddOrderItems(List<OrderItem> orderItem);
+        Task<ServiceResponse<List<Product>>> GetProducts();
+      
     }
 }

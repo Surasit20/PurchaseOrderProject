@@ -50,17 +50,29 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "DevExpress.Blazor": {
+              "target": "Package",
+              "version": "[22.2.6, )"
+            },
+            "DevExpress.Blazor.Reporting.Viewer": {
+              "target": "Package",
+              "version": "[22.2.6, )"
+            },
+            "DevExpress.Reporting.Core": {
+              "target": "Package",
+              "version": "[22.2.6, )"
+            },
             "Syncfusion.Blazor.Core": {
               "target": "Package",
-              "version": "[21.2.3, )"
+              "version": "[20.3.0.61, )"
             },
             "Syncfusion.Blazor.Grid": {
               "target": "Package",
-              "version": "[21.2.3, )"
+              "version": "[20.3.0.61, )"
             },
             "Syncfusion.Blazor.Themes": {
               "target": "Package",
-              "version": "[21.2.3, )"
+              "version": "[20.3.0.61, )"
             }
           },
           "imports": [

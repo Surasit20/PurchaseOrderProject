@@ -1,0 +1,55 @@
+﻿@page "/bill/{orderId:int}"
+@inject IOrderService OrderService
+@using DevExpress.Blazor.Reporting
+@using DevExpress.XtraReports.UI
+@using Frontend.Report;
+<h3>Bill</h3>
+<h3>orderId: @orderId</h3>
+@if (order != null)
+{
+    <h4>เวลาออกที่ใบสั่งชื้อ @order.OrderDate</h4>
+    <h4>เวลาออกใบสั่งชื้อ @order.OrderDateNow</h4>
+  <p>รายการสินค้า</p>
+  
+    @foreach(var item in order.OrderItems)
+    {
+        <p>ลำดับ:@item.No รหัสสินค้า:@item.ProductId จำนวน:@item.Quantity  ราคา:@item.Price ราคารวม:@item.TotalPrice</p>
+    }
+
+<h2>ราคารวมทั้งหมด @order.TotalPrice</h2>
+
+    <h3>Viewer</h3>
+    <link href="_content/DevExpress.Blazor.Themes/blazing-berry.bs5.css" rel="stylesheet" />
+    <link rel="stylesheet" href="_content/DevExpress.Blazor.Reporting.Viewer/css/dx-blazor-reporting-components.bs5.css">
+
+    <DxReportViewer @ref="reportViewer" Report="@Report">
+    </DxReportViewer>
+
+}
+
+else
+{
+    <h1>Loading...</h1>
+}
+
+
+@code {
+
+    [Parameter]
+    public int orderId { get; set; }
+    public Order order;
+    DxReportViewer? reportViewer;
+    XtraReport Report { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        order = await OrderService.GetOrder(orderId);
+        Report = new BillReport();
+        StateHasChanged();
+    }
+
+    public Order GetOrder()
+    {
+        return order;
+    }
+}

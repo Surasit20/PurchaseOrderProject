@@ -8,14 +8,16 @@ namespace Shared
 {
     public class Supplier
     {
-  
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string PostalCode { get; set; }
         public string TaxID { get; set; }
         public string OfficeName { get; set; }
+     
+        public ICollection<Order> Orders { get; set; }
+     
 
-        
 
     }
 }
