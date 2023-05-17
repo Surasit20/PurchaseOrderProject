@@ -24,12 +24,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmlsbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dev01/source/repos/PurchaseOrderProject/Frontend/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[C:/Users/dev01/source/repos/PurchaseOrderProject/Frontend/Pages/EditOrder.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdE9yZGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dev01/source/repos/PurchaseOrderProject/Frontend/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+[C:/Users/dev01/source/repos/PurchaseOrderProject/Frontend/Shared/DataGridIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERhdGFHcmlkSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/dev01/source/repos/PurchaseOrderProject/Frontend/Shared/SurveyPrompt.razor]

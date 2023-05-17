@@ -1,0 +1,169 @@
+﻿@using Syncfusion.Blazor.Buttons;
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Popups;
+@inject NavigationManager NavigationManager
+@inject IOrderService OrderService
+
+    @if(orders != null)
+    {
+        <SfGrid DataSource="@orders">
+
+            <GridColumns>
+                <GridColumn Field=@nameof(Order.Id) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="50"></GridColumn>
+                <GridColumn Field=@nameof(Order.Purchaser) HeaderText="Purchaser Name" Width="150"></GridColumn>
+                <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+                <GridColumn Field=@nameof(Order.Discount) HeaderText="Discount" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                <GridColumn Field=@nameof(Order.TotalPrice) HeaderText="Total Price"  Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                <GridColumn Field=@nameof(Order.Status) HeaderText="Status" TextAlign="TextAlign.Right" Width="120">
+
+                    <Template>
+                    @{
+                        
+                            var value = (context as Order);
+
+                            int? status = value.Status;
+                            string statusText = status == 0 ? "รออนุมัติ" : status == 1 ? "อนุมัติ" : "ไม่อนุมัติ";
+
+                        <SfButton @ref="EditBtnResolved" @onclick="@((args) => onClickApprove(args,value))" IsToggle="true" IsPrimary="true">@statusText</SfButton>
+                        }
+                    </Template>
+
+
+                </GridColumn>
+
+                <GridColumn HeaderText="Edit" TextAlign="TextAlign.Right" Width="120">
+                    <Template>
+                        @{
+                            var value = (context as Order);
+
+                            int? status = value.Status;
+                            string statusText = status == 0 ? "รออนุมัติ" : status == 1 ? "อนุมัติ" : "ไม่อนุมัติ";
+
+                            <SfButton @ref="EditBtnResolved" @onclick="@((args) => onClickEdit(args,value))" IsToggle="true" IsPrimary="true">Edit</SfButton>
+                        }
+                    </Template>
+
+                </GridColumn>
+          
+
+                <GridColumn HeaderText="Delete" TextAlign="TextAlign.Right" Width="120">
+                    <Template>
+                        @{
+                            var value = (context as Order);
+
+                            int? status = value.Status;
+                            string statusText = status == 0 ? "รออนุมัติ" : status == 1 ? "อนุมัติ" : "ไม่อนุมัติ";
+
+                            <SfButton CssClass="e-danger" @ref="EditBtnResolved" @onclick="@((args) => onClickDelete(args,value))" IsToggle="true" IsPrimary="true">Delete</SfButton>
+                        }
+                    </Template>
+
+                </GridColumn>
+
+            </GridColumns>
+        </SfGrid>
+
+        <SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogDelete">
+         
+            <DialogButtons>
+
+                <DialogButton Content="OK" IsPrimary="true" isOnClick="@clickDelete"></DialogButton>
+
+
+                <DialogButton Content="Cancel" OnClick="@clickCancel"></DialogButton>
+              
+            </DialogButtons>
+        </SfDialog>
+
+    <SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogApprove">
+        <DialogButtons>
+            <DialogButton Content="Approval" IsPrimary="true" isOnClick="@clickApprove"></DialogButton>
+            <DialogButton Content="DisApproval" IsPrimary="true" isOnClick="@clickDisapproval"></DialogButton>
+            <DialogButton Content="Cancel" OnClick="@clickCloseApprove"></DialogButton>
+        </DialogButtons>
+    </SfDialog>
+
+
+    }
+    else
+    {
+        <h1>Loading....</h1>
+    }
+
+@code {
+    public int DropDownValue { get; set; } = 0;
+    SfButton EditBtnResolved;
+    public List<Order> orders { get; set; }
+    public int?[] status = { 0, 1, 2 };
+    SfDialog DialogDelete;
+    SfDialog DialogApprove;
+    public string Content = "Are you sure want to delete?";
+    public string Header = "Delete Order";
+    private int orderIdDelete;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+
+        orders = await OrderService.GetOrders();
+
+    }
+
+
+    private void clickCancel(object args)
+    {
+
+        DialogDelete.Hide();
+    }
+
+    private async Task clickDelete(object args)
+    {
+        Order orderDelete = await OrderService.DeleteOrder(orderIdDelete);
+        orders = await OrderService.GetOrders();
+        StateHasChanged();
+        DialogDelete.Hide();
+    }
+
+    private void clickCloseApprove(object args)
+    {
+
+        DialogApprove.Hide();
+    }
+
+    private async Task clickApprove(object args)
+    {
+        Order orderDelete = await OrderService.DeleteOrder(orderIdDelete);
+        orders = await OrderService.GetOrders();
+        StateHasChanged();
+        DialogApprove.Hide();
+    }
+
+    private async Task clickDisapproval(object args)
+    {
+        Order orderDelete = await OrderService.DeleteOrder(orderIdDelete);
+        orders = await OrderService.GetOrders();
+        StateHasChanged();
+        DialogApprove.Hide();
+    }
+
+    private async Task onClickDelete(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
+    {
+        DialogDelete.Show();
+        orderIdDelete = order.Id;
+
+    }
+
+    private void onClickEdit(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
+    {
+
+        NavigationManager.NavigateTo($"edit-order/{order.Id}");
+
+    }
+
+    private void onClickApprove(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
+    {
+        DialogApprove.Show();
+        
+
+    }
+}

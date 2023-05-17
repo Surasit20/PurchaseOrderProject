@@ -19,7 +19,7 @@ namespace Shared
         public int? SupplierId { get; set; }
         public Supplier? Supplier { get; set; } 
         public decimal? Discount { get; set; }
-        public int? Status { get; set; }  
+        public int? Status { get; set; } = 0;
 
     }
 }

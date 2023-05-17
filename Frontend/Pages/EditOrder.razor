@@ -1,0 +1,342 @@
+﻿@page "/edit-order/{orderId:int}"
+@inject IOrderService OrderService
+@using Frontend.Services.OrderService;
+@using Shared;
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Grids
+@using System.Dynamic
+@using Syncfusion.Blazor.Popups;
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.DropDowns
+@inject NavigationManager NavigationManager
+<h3>EditOrder</h3>
+@if (products != null)
+{
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <label>ชื่อผู้จำหน่าย</label>
+            <SfTextBox Placeholder='ผู้จำหน่าย' @bind-Value="@supplier.Name"></SfTextBox>
+            <label>ข้อมูลลูกค้า</label>
+            <div class="multiline">        
+               <SfTextBox Multiline=true Placeholder='รายละเอียดที่อยู่' @bind-Value="@supplier.Address"></SfTextBox>
+              </div>
+   
+            <SfTextBox Placeholder='รหัสไปรษณีย์' @bind-Value="@supplier.PostalCode"></SfTextBox>
+            <SfTextBox Placeholder='เลขประจำตัวผู้เสียภาษี' @bind-Value="@supplier.TaxID"></SfTextBox>
+            <SfTextBox Placeholder='สำนักงาน/สาขาเลขที่' @bind-Value="@supplier.OfficeName"></SfTextBox>
+        </div>
+        <div class="col">
+           
+        </div>
+        <div class="col">
+       
+            
+            <label>วันที่</label>
+            <SfDatePicker TValue="DateTime?" @bind-Value="@order.OrderDate"></SfDatePicker>
+            <label>ผู้สั่งชื้อ</label> 
+            <SfTextBox Placeholder='พนักงานขาย' @bind-Value="@order.Purchaser"></SfTextBox>
+        </div>
+    </div>
+  
+        <SfGrid @ref="Grid" AllowSorting="true" DataSource="@orderItem" AllowPaging="true" Toolbar="@ToolbarItems">
+            <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
+            <GridEvents OnActionBegin="ActionBeginHandler" OnToolbarClick="ToolbarClickHandler" TValue="OrderItem"></GridEvents>
+            <GridSortSettings >
+                <GridSortColumns>
+                    <GridSortColumn Field="No" Direction="SortDirection.Ascending"></GridSortColumn>
+
+                </GridSortColumns>
+            </GridSortSettings>
+            <GridColumns>
+                <GridColumn AllowAdding="false" IsIdentity="true" IsPrimaryKey="true" Field=@nameof(OrderItem.No) HeaderText="ลำดับ" Width="150" >
+
+                </GridColumn>
+                <GridColumn  Field=@nameof(OrderItem.ProductId) HeaderText="รหัสสินค้า" Width="150">
+
+                </GridColumn>
+                <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="ชื่อสินค้า" ForeignKeyValue="Title" ForeignKeyField="Id" ForeignDataSource="@products" Width="150">
+
+                </GridForeignColumn>
+             
+                <GridColumn Field=@nameof(OrderItem.Quantity) HeaderText="จำนวน" Width="150"></GridColumn>
+
+               @* <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="ราคาต่อหน่วย" ForeignKeyValue="Price" ForeignKeyField="Id" ForeignDataSource="@products" Width="150">
+
+                </GridForeignColumn>*@
+                <GridColumn Field=@nameof(OrderItem.Price) HeaderText="ราคาต่อหน่วย" Width="150"></GridColumn>
+                <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="หน่วย" ForeignKeyValue="Unit" ForeignKeyField="Id" ForeignDataSource="@products" Width="150">
+
+                </GridForeignColumn>
+                <GridColumn AllowAdding="false" IsIdentity="true" Field=@nameof(OrderItem.TotalPrice) HeaderText="ราคารวม" Width="150">
+                  @*  <Template>
+                        @{
+                            var value = (context as OrderItem);
+                            
+                  
+                            var finalAmount = value.Price * value.Quantity;
+                            <p>@finalAmount</p>
+                        }
+                    </Template>*@
+                </GridColumn>
+            
+            </GridColumns>
+        </SfGrid>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>รวมเป็นเงิน</p>
+            </div>
+            @if (orderItem.Count == 0 || orderItem == null)
+            {
+                <p>0</p>
+            }
+            else
+            {
+                <div class="col">
+                    <p>@orderItem.Sum(x=>Convert.ToInt32(x.Price * x.Quantity))</p>
+                </div>
+            }
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <span class="col">ส่วนลด</span>
+                    <span class="col"><SfNumericTextBox  Min=0 Max=1 Step=0.01 Format="p2" @bind-Value=@discount>
+
+                        </SfNumericTextBox></span>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <span class="col">ราคาส่วนลด</span>           
+                </div>
+            </div>
+            <div class="col">
+                @{
+                    double total = Decimal.ToDouble(orderItem.Sum(x => Convert.ToInt32(x.Price * x.Quantity)));
+                    totalDiscount = total * discount;
+                order.Discount = (decimal)totalDiscount;
+                    <p>@totalDiscount.ToString("0.00")</p>     
+
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <span class="col">จำนวนเงินรวมทั้งสิ้น</span>
+                </div>
+            </div>
+            <div class="col">
+            @{
+                totalPrice = total - total * discount;
+                order.TotalPrice = (decimal)totalPrice;
+                <p>@totalPrice.ToString("0.00")</p>
+
+
+                }
+            </div>
+</div>
+<SfButton CssClass="e-success" @onclick="onSave">บันทึก</SfButton>
+}else{
+    <p>Loading...</p>
+}
+@code {
+
+
+    [Parameter]
+    public int orderId { get; set; }
+
+    SfDialog DialogAddEditOrderLine;
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+    private List<string> ToolbarItems = new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" };
+    private int count = 0;
+    public int RowCountNo = 1;
+    public int RowCounter = 0;
+    public decimal TotolPrice { get; set; }
+    public double discount { get; set; } = 0;
+    double totalDiscount = 0;
+    double totalPrice = 0;
+    SfGrid<OrderItem> Grid { get; set; }
+    public List<OrderItem> orderItem { get; set; }
+    public Order order { get; set; } = new Order();
+    public Supplier supplier { get; set; } = new Supplier();
+    //public List<OrderItemDTO> products { get; set; } 
+    public List<Product> products { get; set; } =  null;
+
+    protected override void OnInitialized()
+    {
+
+        orderItem = Enumerable.Range(1, 2).Select(x => new OrderItem()
+          {
+
+                 No = x,
+                 Quantity = x,  
+                 TotalPrice = x,            
+                 Price = x,
+                 ProductId = x
+
+            }).ToList();
+
+
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await OrderService.GetProducts();
+
+        Order orderTemp = await OrderService.GetOrder(orderId);
+        order = orderTemp;
+        supplier = orderTemp.Supplier;
+        orderItem = (List<OrderItem>)orderTemp.OrderItems;
+        order.Id = orderTemp.Id;
+        order.SupplierId = orderTemp.SupplierId;       
+        StateHasChanged();
+    }
+
+    public async Task<int> GetRowCounter(OrderItem val)
+    {
+        RowCounter = (int)await Grid.GetRowIndexByPrimaryKey(val.No);
+        return RowCounter + 1;
+    }
+
+
+    private async void onSave(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
+    {
+
+
+        for(int i = 0 ; i<orderItem.Count ; i++)
+
+        {
+            Console.WriteLine($"ราคา: {i}: {orderItem[i].Price}");
+            orderItem[i].TotalPrice = orderItem[i].Price * orderItem[i].Quantity;
+
+            Console.WriteLine($"ID product: {i}: {orderItem[i].ProductId}");
+        }
+
+    
+        order.OrderItems = orderItem;
+
+        Console.WriteLine(order.OrderItems.First().ProductId.Value);
+        ;        await OrderService.EditOrder(order);
+        NavigationManager.NavigateTo("/");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
+    /// <param name="args"></param>
+    public void ActionCompletedHandler(ActionEventArgs<OrderItem> args)
+    {
+
+        if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
+        {
+
+            if (args.Action == "Add")
+            {
+
+
+                foreach (var item in orderItem)
+                {
+                    //  Console.WriteLine(item.Name);
+                }
+            }
+        }
+    }
+
+    public async void ActionBeginHandler(ActionEventArgs<OrderItem> args)
+    {
+
+        if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
+        {
+
+            if (args.Action == "Add")
+            {
+
+                int n = orderItem.Count + 1;
+                args.Data.No = n;
+                Console.WriteLine(args.Data.Quantity);
+                Console.WriteLine(args.Data.Price);
+                //order = new Order()
+                //{
+                //   OrderItems = orderItem
+                
+                //};
+                //await OrderService.AddOrder(order);
+                //StateHasChanged();
+            }
+            else if (args.Action == "Edit")
+            {
+             
+                StateHasChanged();
+                //await ProductService.EditProduct(args.Data);
+            }
+
+        }
+        else if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Delete))
+        {
+            // await ProductService.DeleteProduct((int)args.Data.id);
+        }
+    }
+
+    public async Task ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        if (args.Item.Text == "Add")
+        {
+
+        }
+
+        if (args.Item.Text == "Edit")
+        {
+            //Code for adding goes here
+            Console.WriteLine("222");
+        }
+
+        if (args.Item.Text == "Delete")
+        {
+            //Code for adding goes here
+        }
+    }
+
+    
+
+}

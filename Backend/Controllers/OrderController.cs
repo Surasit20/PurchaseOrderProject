@@ -70,6 +70,19 @@ namespace Backend.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("order")]
+        public async Task<ActionResult<ServiceResponse<List<Order>>>> GetOrders()
+        {
+            var response = await _orderService.GetOrders();
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
+
         // GET api/<OrderController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -77,18 +90,32 @@ namespace Backend.Controllers
             return "value";
         }
 
-  
+
 
         // PUT api/<OrderController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("order")]
+        public async Task<ActionResult<ServiceResponse<Order>>> Put(Order order)
         {
+            var response = await _orderService.EditOrder(order);
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
         }
 
         // DELETE api/<OrderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("order/{orderId}")]
+        public async Task<ActionResult<ServiceResponse<Order>>> Delete(int orderId)
         {
+            var response = await _orderService.DeleteOrder(orderId);
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
         }
     }
 }

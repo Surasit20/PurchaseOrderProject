@@ -61,11 +61,43 @@ namespace Frontend.Services.OrderService
             Console.WriteLine(response.Data);
             return response.Data;
 
+        }
+
+        public async Task<Order> DeleteOrder(int orderId)
+        {
 
 
+            var response = await _http.DeleteAsync($"api/Order/order/{orderId}");
 
 
+            Order responseData = (await response.Content
+            .ReadFromJsonAsync<ServiceResponse<Order>>()).Data;
 
+            return responseData;
+        }
+
+        public async Task<Order> EditOrder(Order order)
+        {
+            Console.WriteLine(order.Id);
+            Console.WriteLine("-------------------");
+            foreach (var i in order.OrderItems)
+            {
+                Console.WriteLine(i.ProductId);
+            }
+            var response = await _http.PutAsJsonAsync($"api/Order/order/", order);
+
+
+            Order responseData = (await response.Content
+            .ReadFromJsonAsync<ServiceResponse<Order>>()).Data;
+            return responseData;
+        }
+        public async Task<List<Order>> GetOrders()
+        {
+
+            var response = new ServiceResponse<List<Order>>();
+            response = await _http.GetFromJsonAsync<ServiceResponse<List<Order>>>($"api/Order/order/");
+
+            return response.Data;
         }
     }
 }
