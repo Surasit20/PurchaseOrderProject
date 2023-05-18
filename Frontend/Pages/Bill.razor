@@ -2,7 +2,8 @@
 @inject IOrderService OrderService
 @using DevExpress.Blazor.Reporting
 @using DevExpress.XtraReports.UI
-@using Frontend.Report;
+
+@using Frontend.Reports;
 <h3>Bill</h3>
 <h3>orderId: @orderId</h3>
 @if (order != null)
@@ -40,11 +41,15 @@ else
     public Order order;
     DxReportViewer? reportViewer;
     XtraReport Report { get; set; }
-
+    string paramName = "strParam";
+    string paramValue = "1005"; 
     protected override async Task OnInitializedAsync()
     {
+       // paramValue =  orderId.ToString();
         order = await OrderService.GetOrder(orderId);
         Report = new BillReport();
+      //  Report.Parameters[paramName].Value = paramValue;
+     
         StateHasChanged();
     }
 

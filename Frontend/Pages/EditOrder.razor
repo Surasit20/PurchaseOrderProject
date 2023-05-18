@@ -196,7 +196,6 @@
     protected override async Task OnInitializedAsync()
     {
         products = await OrderService.GetProducts();
-
         Order orderTemp = await OrderService.GetOrder(orderId);
         order = orderTemp;
         supplier = orderTemp.Supplier;

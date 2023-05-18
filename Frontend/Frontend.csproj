@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Reports\**" />
-    <Content Remove="Reports\**" />
-    <EmbeddedResource Remove="Reports\**" />
-    <None Remove="Reports\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Pages\CreateOrder.razor.css" />
   </ItemGroup>
 
