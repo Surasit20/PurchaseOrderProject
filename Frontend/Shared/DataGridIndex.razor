@@ -35,10 +35,6 @@
                     <Template>
                         @{
                             var value = (context as Order);
-
-                            int? status = value.Status;
-                            string statusText = status == 0 ? "รออนุมัติ" : status == 1 ? "อนุมัติ" : "ไม่อนุมัติ";
-
                             <SfButton @ref="EditBtnResolved" @onclick="@((args) => onClickEdit(args,value))" IsToggle="true" IsPrimary="true">Edit</SfButton>
                         }
                     </Template>
@@ -63,17 +59,19 @@
             </GridColumns>
         </SfGrid>
 
-        <SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogDelete">
+ @*       <SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogDelete">
          
             <DialogButtons>
 
                 <DialogButton Content="OK" IsPrimary="true" isOnClick="@clickDelete"></DialogButton>
 
-
                 <DialogButton Content="Cancel" OnClick="@clickCancel"></DialogButton>
               
             </DialogButtons>
         </SfDialog>
+
+*@
+    <DeleteDialog content="@Content" header="@Header" orderIdDelete=orderIdDelete visible=@visible ClickCloseDeleteHandler="ClickCloseDeleteHandler"></DeleteDialog>
 
     <SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogApprove">
         <DialogButtons>
@@ -82,8 +80,6 @@
             <DialogButton Content="Cancel" OnClick="@clickCloseApprove"></DialogButton>
         </DialogButtons>
     </SfDialog>
-
-
     }
     else
     {
@@ -100,7 +96,14 @@
     public string Content = "Are you sure want to delete?";
     public string Header = "Delete Order";
     private int orderIdDelete;
+    private bool visible = false;
 
+    public class EventCallbackArgs
+    {
+        public bool Confirm { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+    }
 
     protected async override Task OnInitializedAsync()
     {
@@ -124,6 +127,33 @@
         DialogDelete.Hide();
     }
 
+
+    private async Task onClickDelete(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
+    {
+        //DialogDelete.Show();
+        orderIdDelete = order.Id;
+        visible = true;
+
+    }
+    void ClickCloseDeleteHandler(bool onCloseFromChild)
+    {
+        visible = onCloseFromChild;
+        loadData();
+
+    }
+
+    private async Task loadData()
+    {
+        orders = await OrderService.GetOrders();
+        StateHasChanged();
+    }
+
+   
+
+
+
+
+
     private void clickCloseApprove(object args)
     {
 
@@ -145,14 +175,6 @@
         StateHasChanged();
         DialogApprove.Hide();
     }
-
-    private async Task onClickDelete(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
-    {
-        DialogDelete.Show();
-        orderIdDelete = order.Id;
-
-    }
-
     private void onClickEdit(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
     {
 

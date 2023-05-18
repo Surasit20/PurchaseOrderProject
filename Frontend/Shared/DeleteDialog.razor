@@ -1,0 +1,40 @@
+﻿@using Syncfusion.Blazor.Popups;
+@inject IOrderService OrderService
+<SfDialog Content="@content" Header="@header" Width="250px" Height="150px" Visible="@visible" @ref="DialogDelete">
+         
+            <DialogButtons>
+
+                <DialogButton Content="OK" IsPrimary="true" OnClick="@clickDelete"></DialogButton>
+                <DialogButton Content="Cancel" OnClick="@clickCancel"></DialogButton>
+              
+            </DialogButtons>
+</SfDialog>
+
+
+@code {
+    SfDialog DialogDelete;
+    [Parameter]
+    public string content { get; set; }
+    [Parameter]
+    public string header { get; set; }
+    [Parameter]
+    public int orderIdDelete { get; set; }
+    [Parameter]
+    public bool visible { get; set; } = false;
+    [Parameter] 
+    public EventCallback<bool> ClickCloseDeleteHandler { get; set; }
+
+    private void clickCancel(object args)
+    {
+      
+        ClickCloseDeleteHandler.InvokeAsync();
+    }
+
+    private async Task clickDelete(object args)
+    {
+        await OrderService.DeleteOrder(orderIdDelete);
+        ClickCloseDeleteHandler.InvokeAsync(false);
+  
+    }
+
+}
