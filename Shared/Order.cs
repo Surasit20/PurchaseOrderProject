@@ -18,7 +18,7 @@ namespace Shared
         public DateTime? OrderDate { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(18,2)")]
         public decimal? TotalPrice { get; set; }
-        public ICollection<OrderItem>? OrderItems { get; set; } = new List<OrderItem>();
+        public ICollection<OrderItem>? OrderItems { get; set; } 
         public int? SupplierId { get; set; }
         public Supplier? Supplier { get; set; }
         [Column(TypeName = "decimal(18,2)")]

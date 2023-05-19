@@ -1,8 +1,10 @@
 ﻿@page "/bill/{orderId:int}"
 @inject IOrderService OrderService
 @using DevExpress.Blazor.Reporting
+@using DevExpress.DataAccess.ObjectBinding;
 @using DevExpress.XtraReports.UI
 
+@using Frontend.Data;
 @using Frontend.Reports;
 <h3>Bill</h3>
 <h3>orderId: @orderId</h3>
@@ -39,16 +41,37 @@ else
     [Parameter]
     public int orderId { get; set; }
     public Order order;
+    public Order[] orderBill = new Order[1];
     DxReportViewer? reportViewer;
     XtraReport Report { get; set; }
     string paramName = "strParam";
     string paramValue = "1005"; 
+    private WeatherForecast[] forecasts;
     protected override async Task OnInitializedAsync()
     {
-       // paramValue =  orderId.ToString();
+        // paramValue =  orderId.ToString();
         order = await OrderService.GetOrder(orderId);
-        Report = new BillReport();
-      //  Report.Parameters[paramName].Value = paramValue;
+
+        orderBill[0] = order;
+
+
+        Report = new XtraReport2();
+        //WeatherForecast[] forecasts = await WeatherForecastService.GetForecastAsync(DateTime.Now);
+
+        Report.Parameters["OrderId"].Value = order.Id;
+        Report.Parameters["TotalPrice"].Value = order.TotalPrice;
+        Report.Parameters["Discount"].Value = order.Discount;
+        Report.Parameters["OrderId"].Visible = false;
+        Report.Parameters["TotalPrice"].Visible = false;
+        Report.Parameters["Discount"].Visible = false;
+        Report.DataSource = orderBill[0];
+        Report.DataMember = "OrderItems";
+      
+        Report.CreateDocument();
+       
+
+
+    //  Report.Parameters[paramName].Value = paramValue;
      
         StateHasChanged();
     }

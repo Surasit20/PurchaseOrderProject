@@ -56,7 +56,21 @@
 
                 </GridColumn>
 
+
+
+            <GridColumn HeaderText="Bill" TextAlign="TextAlign.Right" Width="120">
+                <Template>
+                    @{
+                        var value = (context as Order);
+                        <SfButton  @ref="EditBtnResolved" @onclick="@(()=> NavigationManager.NavigateTo($"bill/{value.Id}") )" IsToggle="true" IsPrimary="true">Bill</SfButton>
+                    }
+                </Template>
+
+            </GridColumn>
+
             </GridColumns>
+
+
         </SfGrid>
 
  @*       <SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogDelete">

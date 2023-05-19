@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VEZtt4wfrNu2VQr7o3dqDwLViSIgwYrC6asd0yPIUi4=",
+  "Hash": "IBnbuG4xx1YoHAYCjc3UXb7R+n1RcpkCD3sdV9216jM=",
   "Source": "Frontend",
   "BasePath": "_content/Frontend",
   "Mode": "Default",
@@ -629,23 +629,6 @@
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\coloredit-7574ecd2.js"
     },
     {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\columnchooser-16e11f4d.js",
-      "SourceId": "DevExpress.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\",
-      "BasePath": "_content/DevExpress.Blazor",
-      "RelativePath": "modules/columnchooser-16e11f4d.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\columnchooser-16e11f4d.js"
-    },
-    {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\column-resize-87e3249d.js",
       "SourceId": "DevExpress.Blazor",
       "SourceType": "Package",
@@ -661,6 +644,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\column-resize-87e3249d.js"
+    },
+    {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\columnchooser-16e11f4d.js",
+      "SourceId": "DevExpress.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\",
+      "BasePath": "_content/DevExpress.Blazor",
+      "RelativePath": "modules/columnchooser-16e11f4d.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\columnchooser-16e11f4d.js"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\constants-4c28185b.js",
@@ -916,40 +916,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dx-blazor-3c7154a7.js"
-    },
-    {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dxbl-itemlistdropdown-981b4263.js",
-      "SourceId": "DevExpress.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\",
-      "BasePath": "_content/DevExpress.Blazor",
-      "RelativePath": "modules/dxbl-itemlistdropdown-981b4263.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dxbl-itemlistdropdown-981b4263.js"
-    },
-    {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dxbl-window-eafccb6e.js",
-      "SourceId": "DevExpress.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\",
-      "BasePath": "_content/DevExpress.Blazor",
-      "RelativePath": "modules/dxbl-window-eafccb6e.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dxbl-window-eafccb6e.js"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dx-calendar-aca75838.js",
@@ -1290,6 +1256,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dx-ui-handlers-bridge-4076ae57.js"
+    },
+    {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dxbl-itemlistdropdown-981b4263.js",
+      "SourceId": "DevExpress.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\",
+      "BasePath": "_content/DevExpress.Blazor",
+      "RelativePath": "modules/dxbl-itemlistdropdown-981b4263.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dxbl-itemlistdropdown-981b4263.js"
+    },
+    {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dxbl-window-eafccb6e.js",
+      "SourceId": "DevExpress.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\",
+      "BasePath": "_content/DevExpress.Blazor",
+      "RelativePath": "modules/dxbl-window-eafccb6e.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dxbl-window-eafccb6e.js"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\devexpress.blazor\\22.2.6\\staticwebassets\\modules\\dynamic-stylesheet-component-e24292b3.js",
@@ -2431,23 +2431,6 @@
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\scripts\\svgbase.min.js"
     },
     {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\scripts\\syncfusion-blazor.min.js",
-      "SourceId": "Syncfusion.Blazor.Core",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\",
-      "BasePath": "_content/Syncfusion.Blazor.Core",
-      "RelativePath": "scripts/syncfusion-blazor.min.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\scripts\\syncfusion-blazor.min.js"
-    },
-    {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\scripts\\syncfusion-blazor-base.min.js",
       "SourceId": "Syncfusion.Blazor.Core",
       "SourceType": "Package",
@@ -2480,6 +2463,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\scripts\\syncfusion-blazor-extended.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\scripts\\syncfusion-blazor.min.js",
+      "SourceId": "Syncfusion.Blazor.Core",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\",
+      "BasePath": "_content/Syncfusion.Blazor.Core",
+      "RelativePath": "scripts/syncfusion-blazor.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\scripts\\syncfusion-blazor.min.js"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.data\\20.3.0.61\\staticwebassets\\scripts\\data.min.js",
@@ -2992,6 +2992,23 @@
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.splitbuttons\\20.3.0.61\\staticwebassets\\scripts\\splitbuttonsbase.min.js"
     },
     {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap-dark.css",
+      "SourceId": "Syncfusion.Blazor.Themes",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
+      "BasePath": "_content/Syncfusion.Blazor.Themes",
+      "RelativePath": "bootstrap-dark.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap-dark.css"
+    },
+    {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap.css",
       "SourceId": "Syncfusion.Blazor.Themes",
       "SourceType": "Package",
@@ -3026,23 +3043,6 @@
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap4.css"
     },
     {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap5.css",
-      "SourceId": "Syncfusion.Blazor.Themes",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
-      "BasePath": "_content/Syncfusion.Blazor.Themes",
-      "RelativePath": "bootstrap5.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap5.css"
-    },
-    {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap5-dark.css",
       "SourceId": "Syncfusion.Blazor.Themes",
       "SourceType": "Package",
@@ -3060,12 +3060,12 @@
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap5-dark.css"
     },
     {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap-dark.css",
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap5.css",
       "SourceId": "Syncfusion.Blazor.Themes",
       "SourceType": "Package",
       "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
       "BasePath": "_content/Syncfusion.Blazor.Themes",
-      "RelativePath": "bootstrap-dark.css",
+      "RelativePath": "bootstrap5.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3074,24 +3074,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap-dark.css"
-    },
-    {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fabric.css",
-      "SourceId": "Syncfusion.Blazor.Themes",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
-      "BasePath": "_content/Syncfusion.Blazor.Themes",
-      "RelativePath": "fabric.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fabric.css"
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\bootstrap5.css"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fabric-dark.css",
@@ -3111,12 +3094,12 @@
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fabric-dark.css"
     },
     {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fluent.css",
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fabric.css",
       "SourceId": "Syncfusion.Blazor.Themes",
       "SourceType": "Package",
       "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
       "BasePath": "_content/Syncfusion.Blazor.Themes",
-      "RelativePath": "fluent.css",
+      "RelativePath": "fabric.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3125,7 +3108,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fluent.css"
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fabric.css"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fluent-dark.css",
@@ -3145,6 +3128,23 @@
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fluent-dark.css"
     },
     {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fluent.css",
+      "SourceId": "Syncfusion.Blazor.Themes",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
+      "BasePath": "_content/Syncfusion.Blazor.Themes",
+      "RelativePath": "fluent.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\fluent.css"
+    },
+    {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\highcontrast.css",
       "SourceId": "Syncfusion.Blazor.Themes",
       "SourceType": "Package",
@@ -3160,23 +3160,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\highcontrast.css"
-    },
-    {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\material.css",
-      "SourceId": "Syncfusion.Blazor.Themes",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
-      "BasePath": "_content/Syncfusion.Blazor.Themes",
-      "RelativePath": "material.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\material.css"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\material-dark.css",
@@ -3196,12 +3179,12 @@
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\material-dark.css"
     },
     {
-      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\tailwind.css",
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\material.css",
       "SourceId": "Syncfusion.Blazor.Themes",
       "SourceType": "Package",
       "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
       "BasePath": "_content/Syncfusion.Blazor.Themes",
-      "RelativePath": "tailwind.css",
+      "RelativePath": "material.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3210,7 +3193,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\tailwind.css"
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\material.css"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\tailwind-dark.css",
@@ -3228,6 +3211,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\tailwind-dark.css"
+    },
+    {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\tailwind.css",
+      "SourceId": "Syncfusion.Blazor.Themes",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\",
+      "BasePath": "_content/Syncfusion.Blazor.Themes",
+      "RelativePath": "tailwind.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.themes\\20.3.0.61\\staticwebassets\\tailwind.css"
     },
     {
       "Identity": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Frontend\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Frontend.styles.css",
@@ -3296,6 +3296,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Identity": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Frontend\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "SourceId": "Frontend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Frontend\\wwwroot\\",
+      "BasePath": "_content/Frontend",
+      "RelativePath": "css/open-iconic/FONT-LICENSE",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Frontend\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
@@ -3398,23 +3415,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
-    },
-    {
-      "Identity": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Frontend\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
-      "SourceId": "Frontend",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Frontend\\wwwroot\\",
-      "BasePath": "_content/Frontend",
-      "RelativePath": "css/open-iconic/FONT-LICENSE",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Frontend\\wwwroot\\css\\open-iconic\\ICON-LICENSE",

@@ -7,13 +7,12 @@ namespace Frontend.Data
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
+        public static Task<WeatherForecast[]> GetForecastAsync(WeatherForecast weatherForecast)
         {
+        
             return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
-                Date = startDate.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                Id = weatherForecast.Id,
             }).ToArray());
         }
     }

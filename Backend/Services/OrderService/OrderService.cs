@@ -68,21 +68,20 @@ namespace Backend.Services.OrderService
 
         public async Task<ServiceResponse<Order>> GetOrder(int orderId)
         {
-            List<Order> orderDetail = await _context.Orders
-               .Where(c => c.Id == orderId)
-               .Include(c => c.Supplier)
-               .Include(c => c.OrderItems)        
-               .ToListAsync();
+            Order orderDetail = await _context.Orders
+                           .Include(c => c.Supplier)
+                           .Include(c => c.OrderItems)
+                           .FirstOrDefaultAsync(o => o.Id == orderId);
 
-            Console.WriteLine("=============================================================");
-            foreach (var orderItem in orderDetail[0].OrderItems)
+
+            foreach (var orderItem in orderDetail.OrderItems)
             {
                 
                 orderItem.Product = await _context.Products.FirstOrDefaultAsync(p=> p.Id == orderItem.ProductId);
                 Console.WriteLine(orderItem.Product.Title);
             }
            
-            return new ServiceResponse<Order> { Data = orderDetail[0], Message = "Get Order successful!" };
+            return new ServiceResponse<Order> { Data = orderDetail, Message = "Get Order successful!" };
         }
 
         public async Task<ServiceResponse<List<Product>>> GetProducts()
@@ -131,14 +130,9 @@ namespace Backend.Services.OrderService
                 orderOld.Status = order.Status;      
                 orderOld.SupplierId = order.SupplierId;
                 _context.Orders.Update(orderOld);
-            
-
+           
                 await _context.SaveChangesAsync();
-
-
-
-
-                return new ServiceResponse<Order> { Data = order, Message = "Add new order successful!" };
+                return new ServiceResponse<Order> { Data = order, Message = "Edit new order successful!" };
             }
             catch (Exception ex)
             {
