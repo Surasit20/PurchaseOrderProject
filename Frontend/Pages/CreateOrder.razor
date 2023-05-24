@@ -57,7 +57,11 @@
 
                 </GridColumn>
                 <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="ชื่อสินค้า" ForeignKeyValue="Title" ForeignKeyField="Id" ForeignDataSource="@products" Width="150">
-
+                    <EditTemplate>
+                        <SfAutoComplete DataSource="@products" TItem="Product"  TValue="string">
+                            <AutoCompleteFieldSettings Value="Title"></AutoCompleteFieldSettings>
+                        </SfAutoComplete>
+                    </EditTemplate>
                 </GridForeignColumn>
              
                 <GridColumn Field=@nameof(OrderItem.Quantity) HeaderText="จำนวน" Width="150"></GridColumn>

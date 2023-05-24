@@ -22,7 +22,7 @@
                             var value = (context as Order);
 
                             int? status = value.Status;
-                            string statusText = status == 0 ? "รออนุมัติ" : status == 1 ? "อนุมัติ" : "ไม่อนุมัติ";
+                           string statusText = status == 0 ? "Pending Approval" : status == 1 ? "Approval" : "Disapproval";
 
                         <SfButton @ref="EditBtnResolved" @onclick="@((args) => onClickApprove(args,value))" IsToggle="true" IsPrimary="true">@statusText</SfButton>
                         }
@@ -46,10 +46,6 @@
                     <Template>
                         @{
                             var value = (context as Order);
-
-                            int? status = value.Status;
-                            string statusText = status == 0 ? "รออนุมัติ" : status == 1 ? "อนุมัติ" : "ไม่อนุมัติ";
-
                             <SfButton CssClass="e-danger" @ref="EditBtnResolved" @onclick="@((args) => onClickDelete(args,value))" IsToggle="true" IsPrimary="true">Delete</SfButton>
                         }
                     </Template>
@@ -73,24 +69,13 @@
 
         </SfGrid>
 
- @*       <SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogDelete">
-         
-            <DialogButtons>
-
-                <DialogButton Content="OK" IsPrimary="true" isOnClick="@clickDelete"></DialogButton>
-
-                <DialogButton Content="Cancel" OnClick="@clickCancel"></DialogButton>
-              
-            </DialogButtons>
-        </SfDialog>
-
-*@
+    //Child DeleteDialog
     <DeleteDialog content="@Content" header="@Header" orderIdDelete=orderIdDelete visible=@visible ClickCloseDeleteHandler="ClickCloseDeleteHandler"></DeleteDialog>
 
-    <SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogApprove">
+    <SfDialog Content="Are you sure change status?" Header="Change Status" Width="300px" Height="200px" Visible="false" @ref="DialogApprove">
         <DialogButtons>
             <DialogButton Content="Approval" IsPrimary="true" isOnClick="@clickApprove"></DialogButton>
-            <DialogButton Content="DisApproval" IsPrimary="true" isOnClick="@clickDisapproval"></DialogButton>
+            <DialogButton Content="Disapproval" IsPrimary="true" isOnClick="@clickDisapproval"></DialogButton>
             <DialogButton Content="Cancel" OnClick="@clickCloseApprove"></DialogButton>
         </DialogButtons>
     </SfDialog>

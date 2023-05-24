@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Shared\\Shared.csproj",
+      "projectUniqueName": "C:\\Users\\dev01\\source\\repos\\gitclone\\PurchaseOrderProject\\Shared\\Shared.csproj",
       "projectName": "Shared",
-      "projectPath": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Shared\\Shared.csproj",
+      "projectPath": "C:\\Users\\dev01\\source\\repos\\gitclone\\PurchaseOrderProject\\Shared\\Shared.csproj",
       "packagesPath": "C:\\Users\\dev01\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Shared\\obj\\",
+      "outputPath": "C:\\Users\\dev01\\source\\repos\\gitclone\\PurchaseOrderProject\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages"

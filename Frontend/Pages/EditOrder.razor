@@ -228,8 +228,7 @@
     
         order.OrderItems = orderItem;
 
-        Console.WriteLine(order.OrderItems.First().ProductId.Value);
-        ;        await OrderService.EditOrder(order);
+          await OrderService.EditOrder(order);
         NavigationManager.NavigateTo("/");
 
     }

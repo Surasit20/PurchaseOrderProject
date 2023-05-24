@@ -13,17 +13,17 @@ namespace Shared
     {
         public int Id { get; set; }
         [StringLength(200, MinimumLength = 4)]
-        public string? Purchaser { get; set; }
+        public string Purchaser { get; set; }
         public DateTime? OrderDateNow { get; set; } = DateTime.Now;
-        public DateTime? OrderDate { get; set; } = DateTime.Now;
+        public DateTime? OrderDate { get; set; } 
         [Column(TypeName = "decimal(18,2)")]
         public decimal? TotalPrice { get; set; }
         public ICollection<OrderItem>? OrderItems { get; set; } 
-        public int? SupplierId { get; set; }
+        public int SupplierId { get; set; }
         public Supplier? Supplier { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal? Discount { get; set; }
-        public int? Status { get; set; } = 0;
+        public int Status { get; set; } = 0;
 
     }
 }

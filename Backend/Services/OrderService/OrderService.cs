@@ -23,21 +23,9 @@ namespace Backend.Services.OrderService
 
                 order.SupplierId = 1;
                 order.Id = 0;
-
-                //List<OrderItem> orderItem = (List<OrderItem>)order.OrderItems;
-
-                //order.OrderItems = null;
-             
-
-                 _context.Orders.Add(order);
+                _context.Orders.Add(order);
 
                  await _context.SaveChangesAsync();
-
-                //foreach (var i in orderItem)
-                //{
-                //    i.OrderId = order.Id;
-                //    Console.WriteLine($"index:{i.No} {i.TotalPrice}  {i.ProductId} ");
-                //}
 
 
                 return new ServiceResponse<int> { Data = order.Id, Message = "Add new order successful!" };
@@ -120,7 +108,6 @@ namespace Backend.Services.OrderService
         {
             try
             {
-                Console.WriteLine(order.Id);      
                 var orderOld =  _context.Orders.FirstOrDefault(o => o.Id.Equals(order.Id));
                 orderOld.TotalPrice = order.TotalPrice;
                 orderOld.OrderDate = order.OrderDate;
@@ -145,15 +132,9 @@ namespace Backend.Services.OrderService
         {
             try
             {
-                List<Order> orders = await _context.Orders.ToListAsync();
-
-                foreach (Order order in orders)
-                {
-                    Supplier supplier = await _context.Suppliers.FirstOrDefaultAsync(p => p.Id == order.SupplierId);
-                    order.Supplier = supplier;
-
-
-                }
+                List<Order> orders = await _context.Orders
+                    .Include(o => o.Supplier)                 
+                    .ToListAsync();
 
                 return new ServiceResponse<List<Order>> { Data = orders, Message = "Get Orsers successful!" };
             }

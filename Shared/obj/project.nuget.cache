@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H8f/xRi1k52wvhS1n/qPPtFlybHUgtipzm4K2MS+QV3/2WM/Eyj+FFwV9ZljZIdx10GIjuyqUXjr+JdL6NTm6w==",
+  "dgSpecHash": "l9iysjaYv7pVKaoVRqdxYBPzMvn9J2lofjL44BWPUm1++Vl8fzxBf5m9CCkaz0NdkUT2SPkGkWCp8ndeKnMfpg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dev01\\source\\repos\\PurchaseOrderProject\\Shared\\Shared.csproj",
+  "projectFilePath": "C:\\Users\\dev01\\source\\repos\\gitclone\\PurchaseOrderProject\\Shared\\Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

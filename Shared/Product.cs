@@ -14,20 +14,19 @@ namespace Shared
         public int Id { get; set; }
 
         [StringLength(300, MinimumLength = 2)]
-        public string? Title { get; set; } = string.Empty;
+        public string Title { get; set; } = string.Empty;
         [StringLength(300, MinimumLength = 2)]
         public string? Description { get; set; } = string.Empty;
         [StringLength(2000, MinimumLength = 2)]
         public string? ImageUrl { get; set; } = string.Empty;
         [Column(TypeName = "decimal(18,2)")]
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
         [StringLength(50, MinimumLength = 1)]
         public string? Unit { get; set; } = string.Empty;
-    
         public int? ProductTypeId { get; }
         [JsonIgnore]
         public ProductType? ProductType { get; }
         [JsonIgnore]
-        public ICollection<OrderItem>? OrderItems { get; set; } = new List<OrderItem>();
+        public ICollection<OrderItem>? OrderItems { get; set; } 
     }
 }
