@@ -22,7 +22,7 @@ namespace Shared
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         [StringLength(50, MinimumLength = 1)]
-        public string? Unit { get; set; } = string.Empty;
+        public string Unit { get; set; } = string.Empty;
         public int? ProductTypeId { get; }
         [JsonIgnore]
         public ProductType? ProductType { get; }

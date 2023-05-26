@@ -14,19 +14,19 @@ namespace Frontend.Services.OrderService
 
         public List<OrderItem> orderItems { get; set; } = new List<OrderItem>();
         public List<Product> Products { get; set; } = new List<Product>();
-      
+
 
         public async Task<int> AddOrder(Order order)
-        {     
+        {
 
-            var response = await _http.PostAsJsonAsync("api/Order/add-order",order);
+            var response = await _http.PostAsJsonAsync("api/Order/add-order", order);
 
             int newOrderId = (await response.Content
                .ReadFromJsonAsync<ServiceResponse<int>>()).Data;
             Console.WriteLine(newOrderId);
             //foreach (var item in orderItem)
             //{
-              
+
             //      item.OrderId = newOrderId;
             //     orderItems.Add(new OrderItem {
             //     ProductId = item.ProductId,
@@ -39,7 +39,7 @@ namespace Frontend.Services.OrderService
             //    });
             //}
 
-          //    var responseOrderItem = await _http.PostAsJsonAsync("api/Order/add-order-item", orderItems);
+            //    var responseOrderItem = await _http.PostAsJsonAsync("api/Order/add-order-item", orderItems);
             // Console.WriteLine(responseOrderItem);
             return newOrderId;
 
@@ -91,11 +91,11 @@ namespace Frontend.Services.OrderService
             .ReadFromJsonAsync<ServiceResponse<Order>>()).Data;
             return responseData;
         }
-        public async Task<List<Order>> GetOrders()
+        public async Task<List<OrderDto>> GetOrders()
         {
 
-            var response = new ServiceResponse<List<Order>>();
-            response = await _http.GetFromJsonAsync<ServiceResponse<List<Order>>>($"api/Order/order/");
+            var response = new ServiceResponse<List<OrderDto>>();
+            response = await _http.GetFromJsonAsync<ServiceResponse<List<OrderDto>>>($"api/Order/order/");
 
             return response.Data;
         }

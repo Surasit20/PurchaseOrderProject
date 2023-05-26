@@ -14,7 +14,6 @@ namespace Shared
         public int Id { get; set; }
         public int No { get; set; }
         public int ProductId { get; set; }
-
       //  [NotMapped]
         public Product? Product { get; set; }
         public int OrderId { get; set; }

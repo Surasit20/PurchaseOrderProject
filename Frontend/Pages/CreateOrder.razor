@@ -8,151 +8,221 @@
 @using Syncfusion.Blazor.Popups;
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Data;
+
 @inject NavigationManager NavigationManager
+
 <h3>CreateOrder</h3>
 @if (products != null)
 {
-<div class="container">
-    <div class="row">
-        <div class="col">
 
-            <label>ชื่อผู้จำหน่าย</label>
-            <SfTextBox Placeholder='ผู้จำหน่าย' @bind-Value="@supplier.Name"></SfTextBox>
-            <label>ข้อมูลลูกค้า</label>
-            <div class="multiline">        
-               <SfTextBox Multiline=true Placeholder='รายละเอียดที่อยู่' @bind-Value="@supplier.Address"></SfTextBox>
-              </div>
-   
-            <SfTextBox Placeholder='รหัสไปรษณีย์' @bind-Value="@supplier.PostalCode"></SfTextBox>
-            <SfTextBox Placeholder='เลขประจำตัวผู้เสียภาษี' @bind-Value="@supplier.TaxID"></SfTextBox>
-            <SfTextBox Placeholder='สำนักงาน/สาขาเลขที่' @bind-Value="@supplier.OfficeName"></SfTextBox>
-        </div>
-        <div class="col">
-           
-        </div>
-        <div class="col">
-       
-            
-            <label>วันที่</label>
-            <SfDatePicker TValue="DateTime?" @bind-Value="@order.OrderDate"></SfDatePicker>
-            <label>ผู้สั่งชื้อ</label> 
-            <SfTextBox Placeholder='พนักงานขาย' @bind-Value="@order.Purchaser"></SfTextBox>
-        </div>
-    </div>
-  
+
+    <div class="container">
+        <EditForm Model="@order">
+            <DataAnnotationsValidator />
+
+            <ValidationSummary />
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>ชื่อผู้จำหน่าย</label>
+
+                        <SfTextBox Placeholder='ผู้จำหน่าย' @bind-Value="@order.Supplier.Name"></SfTextBox>
+                        <ValidationMessage For="@(() => order.Supplier.Name)"></ValidationMessage>
+                    </div>
+                    <label>ข้อมูลลูกค้า</label>
+                    <div class="multiline">
+                        <SfTextBox Multiline=true Placeholder='รายละเอียดที่อยู่' @bind-Value="@order.Supplier.Address"></SfTextBox>
+                    </div>
+
+                    <SfTextBox Placeholder='รหัสไปรษณีย์' @bind-Value="@order.Supplier.PostalCode"></SfTextBox>
+                    <SfTextBox Placeholder='เลขประจำตัวผู้เสียภาษี' @bind-Value="@order.Supplier.TaxID"></SfTextBox>
+                    <SfTextBox Placeholder='สำนักงาน/สาขาเลขที่' @bind-Value="@order.Supplier.OfficeName"></SfTextBox>
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+
+
+
+
+                    <label>วันที่</label>
+                    <SfDatePicker TValue="DateTime" @bind-Value="@order.OrderDate"></SfDatePicker>
+                    <label>ผู้สั่งชื้อ</label>
+                    <SfTextBox Placeholder='พนักงานขาย' @bind-Value="@order.Purchaser"></SfTextBox>
+                </div>
+            </div>
+            <SfButton>Submit</SfButton>
+
+
+        </EditForm>
+
+
+
+
         <SfGrid @ref="Grid" AllowSorting="true" DataSource="@orderItem" AllowPaging="true" Toolbar="@ToolbarItems">
-            <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
+            <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
             <GridEvents OnActionBegin="ActionBeginHandler" OnToolbarClick="ToolbarClickHandler" TValue="OrderItem"></GridEvents>
-            <GridSortSettings >
+            <GridSortSettings>
                 <GridSortColumns>
                     <GridSortColumn Field="No" Direction="SortDirection.Ascending"></GridSortColumn>
 
                 </GridSortColumns>
             </GridSortSettings>
             <GridColumns>
-                <GridColumn AllowAdding="false" IsIdentity="true" IsPrimaryKey="true" Field=@nameof(OrderItem.No) HeaderText="ลำดับ" Width="150" >
+                <GridColumn AllowAdding="false" IsIdentity="true" IsPrimaryKey="true" Field=@nameof(OrderItem.No) HeaderText="ลำดับ" DefaultValue="@(orderItem.Count+1)" Width="150" >
 
                 </GridColumn>
-                <GridColumn  Field=@nameof(OrderItem.ProductId) HeaderText="รหัสสินค้า" Width="150">
+                <GridColumn  AllowAdding="false"  Field=@nameof(OrderItem.ProductId) HeaderText="รหัสสินค้า" Width="150">
+                   <EditTemplate>
+                        <SfNumericTextBox ShowSpinButton="false" ID="ProductId" @ref="NumericProductIdRef" TValue="int" @bind-value="@((context as OrderItem).ProductId)">
 
+                        </SfNumericTextBox>
+                   </EditTemplate>
                 </GridColumn>
-                <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="ชื่อสินค้า" ForeignKeyValue="Title" ForeignKeyField="Id" ForeignDataSource="@products" Width="150">
-                    <EditTemplate>
-                        <SfAutoComplete DataSource="@products" TItem="Product"  TValue="string">
-                            <AutoCompleteFieldSettings Value="Title"></AutoCompleteFieldSettings>
-                        </SfAutoComplete>
+                <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="ชื่อสินค้า" ForeignKeyValue="Title" ForeignKeyField="Id" ForeignDataSource="@products" Width="220">
+
+                    <EditTemplate >
+                        
+                        @* <SfAutoComplete DataSource="@products" TItem="Product"  TValue="string">
+                    <AutoCompleteFieldSettings Value="Title"></AutoCompleteFieldSettings>
+                    </SfAutoComplete>*@
+                        @* @bind-Value="@products.FirstOrDefault(p => p.Id == (context as OrderItem).ProductId).Title"*@
+                        <SfComboBox @ref="@ComboObj" TValue="string" Placeholder="Select a Country" Width="250px" 
+                            TItem="Product" DataSource="@products" AllowCustom="true" AllowFiltering="true"
+                           >
+                            <ComboBoxFieldSettings Text="Title" Value="Title"></ComboBoxFieldSettings>
+                            <ComboBoxEvents TValue="string" Filtering="@OnFiltering" TItem="Product" ValueChange="@OnChange"></ComboBoxEvents>
+                            <ComboBoxTemplates TItem="Product">
+                                <NoRecordsTemplate>
+                                    <div>
+                                        <div id="nodata">No matched item, do you want to add it as new item in list?</div>
+                                        <SfButton id="btn" class="e-control e-btn" style="margin-top: 10px" @onclick="@AddItem">ADD NEW ITEM</SfButton>
+                                    </div>
+                                </NoRecordsTemplate>
+                            </ComboBoxTemplates>
+                        </SfComboBox>
                     </EditTemplate>
+
+          @*          <Template>
+                        @{
+                        try
+                        {
+                            var value = (context as OrderItem);
+                                <p>@(
+                                 products.FirstOrDefault(p => p.Id == value.ProductId).Title ?? "ยังไม่ได้เลือกสินค้า...")</p>
+                            }
+                            catch (Exception e)
+                            {
+                                <p>ยังไม่ได้เลือกสินค้า...</p>
+                            }
+                        
+
+                        }
+                
+                    </Template>*@
+
                 </GridForeignColumn>
-             
-                <GridColumn Field=@nameof(OrderItem.Quantity) HeaderText="จำนวน" Width="150"></GridColumn>
 
-               @* <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="ราคาต่อหน่วย" ForeignKeyValue="Price" ForeignKeyField="Id" ForeignDataSource="@products" Width="150">
+                <GridColumn Field=@nameof(OrderItem.Quantity) HeaderText="จำนวน" Width="150" DefaultValue="1"></GridColumn>
 
-                </GridForeignColumn>*@
-                <GridColumn Field=@nameof(OrderItem.Price) HeaderText="ราคาต่อหน่วย" Width="150"></GridColumn>
-                <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="หน่วย" ForeignKeyValue="Unit" ForeignKeyField="Id" ForeignDataSource="@products" Width="150">
+                @* <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="ราคาต่อหน่วย" ForeignKeyValue="Price" ForeignKeyField="Id" ForeignDataSource="@products" Width="150">
 
+            </GridForeignColumn>*@
+                <GridColumn Field=@nameof(OrderItem.Price) HeaderText="ราคาต่อหน่วย" Width="150">
+                    <EditTemplate >
+                        <SfNumericTextBox ID="Price" @ref="NumericRef" TValue="decimal"  @bind-value="@((context as OrderItem).Price)">
+
+                        </SfNumericTextBox>
+                    </EditTemplate>
+                </GridColumn>
+                <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="หน่วย" ForeignKeyValue="Unit" ForeignKeyField="Id" ForeignDataSource="@products" Width="150" >
+           
                 </GridForeignColumn>
                 <GridColumn AllowAdding="false" IsIdentity="true" Field=@nameof(OrderItem.TotalPrice) HeaderText="ราคารวม" Width="150">
                     <Template>
                         @{
                             var value = (context as OrderItem);
-                            
-                  
+
+
                             var finalAmount = value.Price * value.Quantity;
                             <p>@finalAmount</p>
                         }
                     </Template>
                 </GridColumn>
-            
+
             </GridColumns>
         </SfGrid>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>รวมเป็นเงิน</p>
         </div>
-        <div class="row">
+        @if (orderItem.Count == 0 || orderItem == null)
+        {
+            <p>0</p>
+        }
+        else
+        {
             <div class="col">
-                <p>รวมเป็นเงิน</p>
+                <p>@orderItem.Sum(x=>Convert.ToInt32(x.Price * x.Quantity))</p>
             </div>
-            @if (orderItem.Count == 0 || orderItem == null)
-            {
-                <p>0</p>
-            }
-            else
-            {
-                <div class="col">
-                    <p>@orderItem.Sum(x=>Convert.ToInt32(x.Price * x.Quantity))</p>
-                </div>
-            }
+        }
 
-        </div>
+    </div>
 
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    <span class="col">ส่วนลด</span>
-                    <span class="col"><SfNumericTextBox  Min=0 Max=1 Step=0.01 Format="p2" @bind-Value=@discount>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <span class="col">ส่วนลด</span>
+                <span class="col">
+                    <SfNumericTextBox Min=0 Max=1 Step=0.01 Format="p2" @bind-Value=@discount>
 
-                        </SfNumericTextBox></span>
-                </div>
-            </div>
-            <div class="col">
-
+                    </SfNumericTextBox>
+                </span>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    <span class="col">ราคาส่วนลด</span>           
-                </div>
+        <div class="col">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <span class="col">ราคาส่วนลด</span>
             </div>
-            <div class="col">
-                @{
-                    double total = Decimal.ToDouble(orderItem.Sum(x => Convert.ToInt32(x.Price * x.Quantity)));
-                    totalDiscount = total * discount;
+        </div>
+        <div class="col">
+            @{
+                double total = Decimal.ToDouble(orderItem.Sum(x => Convert.ToInt32(x.Price * x.Quantity)));
+                totalDiscount = total * discount;
                 order.Discount = (decimal)totalDiscount;
-                    <p>@totalDiscount.ToString("0.00")</p>     
+                <p>@totalDiscount.ToString("0.00")</p>
 
-                }
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <span class="col">จำนวนเงินรวมทั้งสิ้น</span>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    <span class="col">จำนวนเงินรวมทั้งสิ้น</span>
-                </div>
-            </div>
-            <div class="col">
+        <div class="col">
             @{
                 totalPrice = total - total * discount;
                 order.TotalPrice = (decimal)totalPrice;
                 <p>@totalPrice.ToString("0.00")</p>
 
 
-                }
-            </div>
-</div>
-<SfButton CssClass="e-success" @onclick="onSave">บันทึก</SfButton>
-}else{
+            }
+        </div>
+    </div>
+    <SfButton CssClass="e-success" @onclick="onSave">บันทึก</SfButton>
+}
+else
+{
     <p>Loading...</p>
 }
 @code {
@@ -173,23 +243,28 @@
     public List<OrderItem> orderItem { get; set; }
     public Order order { get; set; } = new Order();
     public Supplier supplier { get; set; } = new Supplier();
-    //public List<OrderItemDTO> products { get; set; } 
+    SfNumericTextBox<decimal> NumericRef;
+    SfNumericTextBox<int> NumericProductIdRef;
+    decimal PriceRef;
+    int productId;
+    //public List<OrderItemDTO> products { get; set; }
     public List<Product> products { get; set; }
 
     protected override void OnInitialized()
     {
 
         orderItem = Enumerable.Range(1, 2).Select(x => new OrderItem()
-          {
+            {
 
-                 No = x,
-                 Quantity = x,  
-                 TotalPrice = x,            
-                 Price = x,
-                 ProductId = x
+                No = x,
+                Quantity = x,
+                TotalPrice = x,
+                Price = x,
+                ProductId = x
 
             }).ToList();
 
+        order.Supplier = supplier;
 
 
     }
@@ -197,7 +272,7 @@
     protected override async Task OnInitializedAsync()
     {
         products = await OrderService.GetProducts();
-        StateHasChanged();
+        //  CustomDataItems = DataSource;
     }
 
     public async Task<int> GetRowCounter(OrderItem val)
@@ -211,7 +286,7 @@
     {
 
 
-        for(int i = 0 ; i<orderItem.Count ; i++)
+        for (int i = 0; i < orderItem.Count; i++)
 
         {
             Console.WriteLine($"ราคา: {i}: {orderItem[i].Price}");
@@ -222,7 +297,7 @@
 
 
         int orderId = await OrderService.AddOrder(order);
-            NavigationManager.NavigateTo($"bill/{orderId}");
+        NavigationManager.NavigateTo($"bill/{orderId}");
 
     }
 
@@ -255,7 +330,7 @@
     /// <summary>
     /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// </summary>
-    /// <param name="args"></param>
+
     public void ActionCompletedHandler(ActionEventArgs<OrderItem> args)
     {
 
@@ -283,21 +358,26 @@
             if (args.Action == "Add")
             {
 
-                int n = orderItem.Count + 1;
-                args.Data.No = n;
-                Console.WriteLine(args.Data.Quantity);
-                Console.WriteLine(args.Data.Price);
+
+
+                int n = orderItem.Count;
+                args.Data.No = n+1;
+                args.Index = n;
+                args.Data.Price = NumericRef.Value;
+                args.Data.ProductId = NumericProductIdRef.Value;
+
+    
                 //order = new Order()
                 //{
                 //   OrderItems = orderItem
-                
+
                 //};
                 //await OrderService.AddOrder(order);
                 //StateHasChanged();
             }
             else if (args.Action == "Edit")
             {
-             
+
                 StateHasChanged();
                 //await ProductService.EditProduct(args.Data);
             }
@@ -328,6 +408,74 @@
         }
     }
 
+
+
+    /// <summary>
+    /// /////////////////////////////////////////////////////
+    /// </summary>
+
+    private SfComboBox<string, Product> ComboObj;
+    private string Custom { get; set; }
+    private List<Product> CustomDataItems { get; set; } = new List<Product>();
+    public class TItem
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
+    private async Task OnFiltering(Syncfusion.Blazor.DropDowns.FilteringEventArgs args)
+    {
+        Custom = args.Text;
+        args.PreventDefaultAction = true;
+        var query = new Query().Where(new WhereFilter() { Field = "Name", Operator = "contains", value = args.Text, IgnoreCase = true });
+        query = !string.IsNullOrEmpty(args.Text) ? query : new Query();
+        await ComboObj.FilterAsync(CustomDataItems, query);
+    }
+
+
+    private List<TItem> DataSource = new List<TItem>
+    {
+        new TItem() { Name = "Australia", Code = "AU" },
+        new TItem() { Name = "Bermuda", Code = "BM" },
+        new TItem() { Name = "Canada", Code = "CA" },
+        new TItem() { Name = "Cameroon", Code = "CM" },
+        new TItem() { Name = "Denmark", Code = "DK" },
+        new TItem() { Name = "France", Code = "FR" },
+        new TItem() { Name = "Finland", Code = "FI" },
+        new TItem() { Name = "Germany", Code = "DE" },
+        new TItem() { Name = "Greenland", Code = "GL" },
+        new TItem() { Name = "Hong Kong", Code = "HK" },
+        new TItem() { Name = "India", Code = "IN" },
+        new TItem() { Name = "Italy", Code = "IT" }
+    };
+
+    private async Task AddItem()
+    {
+        var customData = new Product() { Title = Custom };
+
+        await this.ComboObj.AddItems(new List<Product> { customData });
+        CustomDataItems.Add(customData);
+        await this.ComboObj.HidePopupAsync();
+    }
+    public async Task OnChange(ChangeEventArgs<string, Product> args)
+    {
+        
+
+        foreach(Product product in products)
+        {
+            if(product.Title == args.Value)
+            {
+                productId = product.Id;
+                break;
+            }
+        }
+        Random random = new Random();
+
+        NumericRef.Value = (new decimal[] { 244, 145, 444, 54, 33 })[new Random().Next(5)];
     
+        NumericProductIdRef.Value = productId;
+        NumericRef.FocusIn();
+        NumericProductIdRef.FocusIn();
+    }
+
 
 }

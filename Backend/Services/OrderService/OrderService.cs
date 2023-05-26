@@ -1,4 +1,5 @@
-﻿using Backend.Data;
+﻿using AutoMapper;
+using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Shared;
@@ -8,10 +9,11 @@ namespace Backend.Services.OrderService
     public class OrderService : IOrderService
     {
         private readonly DataContext _context;
-
-        public OrderService(DataContext context)
+        private readonly IMapper _mapper;
+        public OrderService(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
 
         }
 
@@ -25,7 +27,7 @@ namespace Backend.Services.OrderService
                 order.Id = 0;
                 _context.Orders.Add(order);
 
-                 await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
 
                 return new ServiceResponse<int> { Data = order.Id, Message = "Add new order successful!" };
@@ -33,10 +35,10 @@ namespace Backend.Services.OrderService
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return new ServiceResponse<int> { Data = 0, Message = ex.Message, Success=false };
+                return new ServiceResponse<int> { Data = 0, Message = ex.Message, Success = false };
             }
 
-    
+
         }
 
         public async Task AddOrderItems(List<OrderItem> orderItem)
@@ -50,8 +52,8 @@ namespace Backend.Services.OrderService
                 _context.OrderItems.Add(item);
                 await _context.SaveChangesAsync();
             }
-         
-            
+
+
         }
 
         public async Task<ServiceResponse<Order>> GetOrder(int orderId)
@@ -59,16 +61,17 @@ namespace Backend.Services.OrderService
             Order orderDetail = await _context.Orders
                            .Include(c => c.Supplier)
                            .Include(c => c.OrderItems)
+                           .ThenInclude(c => c.Product)
                            .FirstOrDefaultAsync(o => o.Id == orderId);
 
 
             foreach (var orderItem in orderDetail.OrderItems)
             {
-                
-                orderItem.Product = await _context.Products.FirstOrDefaultAsync(p=> p.Id == orderItem.ProductId);
+
+                orderItem.Product = await _context.Products.FirstOrDefaultAsync(p => p.Id == orderItem.ProductId);
                 Console.WriteLine(orderItem.Product.Title);
             }
-           
+
             return new ServiceResponse<Order> { Data = orderDetail, Message = "Get Order successful!" };
         }
 
@@ -78,8 +81,8 @@ namespace Backend.Services.OrderService
 
             try
             {
-                var products  = await _context.Products.ToListAsync();
-            
+                var products = await _context.Products.ToListAsync();
+
                 return new ServiceResponse<List<Product>> { Data = products, Message = "Get Products successful!" };
             }
             catch (Exception ex)
@@ -108,16 +111,16 @@ namespace Backend.Services.OrderService
         {
             try
             {
-                var orderOld =  _context.Orders.FirstOrDefault(o => o.Id.Equals(order.Id));
+                var orderOld = _context.Orders.FirstOrDefault(o => o.Id.Equals(order.Id));
                 orderOld.TotalPrice = order.TotalPrice;
                 orderOld.OrderDate = order.OrderDate;
                 orderOld.OrderItems = order.OrderItems;
                 orderOld.Purchaser = order.Purchaser;
                 orderOld.Discount = order.Discount;
-                orderOld.Status = order.Status;      
+                orderOld.Status = order.Status;
                 orderOld.SupplierId = order.SupplierId;
                 _context.Orders.Update(orderOld);
-           
+
                 await _context.SaveChangesAsync();
                 return new ServiceResponse<Order> { Data = order, Message = "Edit new order successful!" };
             }
@@ -128,19 +131,22 @@ namespace Backend.Services.OrderService
             }
         }
 
-        public async Task<ServiceResponse<List<Order>>> GetOrders()
+        public async Task<ServiceResponse<List<OrderDto>>> GetOrders()
         {
             try
             {
-                List<Order> orders = await _context.Orders
-                    .Include(o => o.Supplier)                 
+                var orders = await _context.Orders
+                    .Include(o => o.Supplier)
                     .ToListAsync();
 
-                return new ServiceResponse<List<Order>> { Data = orders, Message = "Get Orsers successful!" };
+                List<OrderDto> orderDto = _mapper.Map<List<OrderDto>>(orders);
+
+
+                return new ServiceResponse<List<OrderDto>> { Data = orderDto, Message = "Get Orsers successful!" };
             }
             catch (Exception ex)
             {
-                return new ServiceResponse<List<Order>> { Data = null, Message = ex.Message, Success = false };
+                return new ServiceResponse<List<OrderDto>> { Data = null, Message = ex.Message, Success = false };
             }
         }
     }

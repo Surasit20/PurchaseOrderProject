@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERhdGFHcmlkSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/dev01/source/repos/gitclone/PurchaseOrderProject/Frontend/Shared/DataGridProduct.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERhdGFHcmlkUHJvZHVjdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/dev01/source/repos/gitclone/PurchaseOrderProject/Frontend/Shared/DeleteDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERlbGV0ZURpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

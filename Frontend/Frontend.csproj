@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NewFolder\**" />
+    <Compile Remove="Services\ReportingService\**" />
+    <Content Remove="NewFolder\**" />
+    <Content Remove="Services\ReportingService\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <EmbeddedResource Remove="Services\ReportingService\**" />
+    <None Remove="NewFolder\**" />
+    <None Remove="Services\ReportingService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Pages\CreateOrder.razor.css" />
   </ItemGroup>
 
@@ -26,11 +37,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-    <Folder Include="Services\ReportingService\" />
   </ItemGroup>
 
 </Project>

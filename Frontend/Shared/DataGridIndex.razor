@@ -9,19 +9,19 @@
         <SfGrid DataSource="@orders">
 
             <GridColumns>
-                <GridColumn Field=@nameof(Order.Id) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="50"></GridColumn>
-                <GridColumn Field=@nameof(Order.Purchaser) HeaderText="Purchaser Name" Width="150"></GridColumn>
-                <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
-                <GridColumn Field=@nameof(Order.Discount) HeaderText="Discount" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
-                <GridColumn Field=@nameof(Order.TotalPrice) HeaderText="Total Price"  Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
-                <GridColumn Field=@nameof(Order.Status) HeaderText="Status" TextAlign="TextAlign.Right" Width="120">
+            <GridColumn Field=@nameof(OrderDto.Id) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="50"></GridColumn>
+            <GridColumn Field=@nameof(OrderDto.Purchaser) HeaderText="Purchaser Name" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(OrderDto.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+            <GridColumn Field=@nameof(OrderDto.Discount) HeaderText="Discount" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(OrderDto.TotalPrice) HeaderText="Total Price" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(OrderDto.Status) HeaderText="Status" TextAlign="TextAlign.Right" Width="120">
 
                     <Template>
                     @{
-                        
-                            var value = (context as Order);
 
-                            int? status = value.Status;
+                        var value = (context as OrderDto);
+
+                            int status = value.Status;
                            string statusText = status == 0 ? "Pending Approval" : status == 1 ? "Approval" : "Disapproval";
 
                         <SfButton @ref="EditBtnResolved" @onclick="@((args) => onClickApprove(args,value))" IsToggle="true" IsPrimary="true">@statusText</SfButton>
@@ -34,7 +34,7 @@
                 <GridColumn HeaderText="Edit" TextAlign="TextAlign.Right" Width="120">
                     <Template>
                         @{
-                            var value = (context as Order);
+                        var value = (context as OrderDto);
                             <SfButton @ref="EditBtnResolved" @onclick="@((args) => onClickEdit(args,value))" IsToggle="true" IsPrimary="true">Edit</SfButton>
                         }
                     </Template>
@@ -45,7 +45,7 @@
                 <GridColumn HeaderText="Delete" TextAlign="TextAlign.Right" Width="120">
                     <Template>
                         @{
-                            var value = (context as Order);
+                        var value = (context as OrderDto);
                             <SfButton CssClass="e-danger" @ref="EditBtnResolved" @onclick="@((args) => onClickDelete(args,value))" IsToggle="true" IsPrimary="true">Delete</SfButton>
                         }
                     </Template>
@@ -57,7 +57,7 @@
             <GridColumn HeaderText="Bill" TextAlign="TextAlign.Right" Width="120">
                 <Template>
                     @{
-                        var value = (context as Order);
+                        var value = (context as OrderDto);
                         <SfButton  @ref="EditBtnResolved" @onclick="@(()=> NavigationManager.NavigateTo($"bill/{value.Id}") )" IsToggle="true" IsPrimary="true">Bill</SfButton>
                     }
                 </Template>
@@ -88,7 +88,7 @@
 @code {
     public int DropDownValue { get; set; } = 0;
     SfButton EditBtnResolved;
-    public List<Order> orders { get; set; }
+    public List<OrderDto> orders { get; set; }
     public int?[] status = { 0, 1, 2 };
     SfDialog DialogDelete;
     SfDialog DialogApprove;
@@ -127,7 +127,7 @@
     }
 
 
-    private async Task onClickDelete(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
+    private async Task onClickDelete(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, OrderDto order)
     {
         //DialogDelete.Show();
         orderIdDelete = order.Id;
@@ -174,14 +174,14 @@
         StateHasChanged();
         DialogApprove.Hide();
     }
-    private void onClickEdit(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
+    private void onClickEdit(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, OrderDto order)
     {
 
         NavigationManager.NavigateTo($"edit-order/{order.Id}");
 
     }
 
-    private void onClickApprove(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, Order order)
+    private void onClickApprove(Microsoft.AspNetCore.Components.Web.MouseEventArgs args, OrderDto order)
     {
         DialogApprove.Show();
         

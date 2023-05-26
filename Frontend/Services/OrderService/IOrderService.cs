@@ -10,7 +10,7 @@ namespace Frontend.Services.OrderService
         public Task<Order> EditOrder(Order order);
         public Task<Order> GetOrder(int orderId);
         public Task<List<Product>> GetProducts();
-        public Task<List<Order>> GetOrders();
+        public Task<List<OrderDto>> GetOrders();
         public Task<Order> DeleteOrder(int orderId);
     }
 }

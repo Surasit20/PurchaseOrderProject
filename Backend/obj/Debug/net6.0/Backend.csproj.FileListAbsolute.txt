@@ -178,3 +178,5 @@ C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Backend\obj\Debug\net6
 C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Backend\obj\Debug\net6.0\Backend.pdb
 C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Backend\obj\Debug\net6.0\Backend.genruntimeconfig.cache
 C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Backend\obj\Debug\net6.0\ref\Backend.dll
+C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Backend\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Backend\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
