@@ -11,6 +11,7 @@ namespace Backend.Services.OrderService
         Task AddOrderItems(List<OrderItem> orderItem);
         Task<ServiceResponse<List<Product>>> GetProducts();
         Task<ServiceResponse<Order>> DeleteOrder(int orderId);
+        Task<ServiceResponse<List<ChartsSeller>>> GetChartsSeller();
 
     }
 }

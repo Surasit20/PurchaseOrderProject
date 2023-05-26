@@ -48,7 +48,7 @@
 
 
                     <label>วันที่</label>
-                    <SfDatePicker TValue="DateTime" @bind-Value="@order.OrderDate"></SfDatePicker>
+                    <SfDatePicker TValue="DateTime" @bind-Value="@order.OrderDate" ></SfDatePicker>
                     <label>ผู้สั่งชื้อ</label>
                     <SfTextBox Placeholder='พนักงานขาย' @bind-Value="@order.Purchaser"></SfTextBox>
                 </div>
@@ -81,37 +81,41 @@
                         </SfNumericTextBox>
                    </EditTemplate>
                 </GridColumn>
-                <GridForeignColumn Field=@nameof(OrderItem.ProductId) HeaderText="ชื่อสินค้า" ForeignKeyValue="Title" ForeignKeyField="Id" ForeignDataSource="@products" Width="220">
+                <GridForeignColumn DefaultValue="1" Field=@nameof(OrderItem.ProductId) HeaderText="ชื่อสินค้า" ForeignKeyValue="Title" ForeignKeyField="Id" ForeignDataSource="@products" Width="220">
 
                     <EditTemplate >
                         
                         @* <SfAutoComplete DataSource="@products" TItem="Product"  TValue="string">
                     <AutoCompleteFieldSettings Value="Title"></AutoCompleteFieldSettings>
                     </SfAutoComplete>*@
-                        @* @bind-Value="@products.FirstOrDefault(p => p.Id == (context as OrderItem).ProductId).Title"*@
+                        @* @bind-Value="@products.FirstOrDefault(p => p.Id == (context as OrderItem).ProductId).Title"
+
+                    Value="@products.FirstOrDefault(p => p.Id == (context as OrderItem).ProductId).Title"
+                        *@
                         <SfComboBox @ref="@ComboObj" TValue="string" Placeholder="Select a Country" Width="250px" 
                             TItem="Product" DataSource="@products" AllowCustom="true" AllowFiltering="true"
-                           >
+                              Value="@( context  != null ? products.FirstOrDefault(p => p.Id == (context as OrderItem).ProductId).Title : "")">
                             <ComboBoxFieldSettings Text="Title" Value="Title"></ComboBoxFieldSettings>
                             <ComboBoxEvents TValue="string" Filtering="@OnFiltering" TItem="Product" ValueChange="@OnChange"></ComboBoxEvents>
-                            <ComboBoxTemplates TItem="Product">
+                            <ComboBoxTemplates TItem="Product" >
                                 <NoRecordsTemplate>
                                     <div>
                                         <div id="nodata">No matched item, do you want to add it as new item in list?</div>
                                         <SfButton id="btn" class="e-control e-btn" style="margin-top: 10px" @onclick="@AddItem">ADD NEW ITEM</SfButton>
                                     </div>
                                 </NoRecordsTemplate>
+
+                            
                             </ComboBoxTemplates>
                         </SfComboBox>
                     </EditTemplate>
 
-          @*          <Template>
-                        @{
+         @*      <Template>
+                    @{
                         try
                         {
                             var value = (context as OrderItem);
-                                <p>@(
-                                 products.FirstOrDefault(p => p.Id == value.ProductId).Title ?? "ยังไม่ได้เลือกสินค้า...")</p>
+                                <p>@( products.FirstOrDefault(p => p.Id == value.ProductId).Title ?? "คอมพิวเตอร์")</p>
                             }
                             catch (Exception e)
                             {
@@ -272,6 +276,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         products = await OrderService.GetProducts();
+        order.OrderDate = DateTime.Now;
         //  CustomDataItems = DataSource;
     }
 
@@ -378,8 +383,8 @@ else
             else if (args.Action == "Edit")
             {
 
-                StateHasChanged();
-                //await ProductService.EditProduct(args.Data);
+                args.Data.Price = NumericRef.Value;
+                args.Data.ProductId = NumericProductIdRef.Value;
             }
 
         }
@@ -431,22 +436,6 @@ else
         await ComboObj.FilterAsync(CustomDataItems, query);
     }
 
-
-    private List<TItem> DataSource = new List<TItem>
-    {
-        new TItem() { Name = "Australia", Code = "AU" },
-        new TItem() { Name = "Bermuda", Code = "BM" },
-        new TItem() { Name = "Canada", Code = "CA" },
-        new TItem() { Name = "Cameroon", Code = "CM" },
-        new TItem() { Name = "Denmark", Code = "DK" },
-        new TItem() { Name = "France", Code = "FR" },
-        new TItem() { Name = "Finland", Code = "FI" },
-        new TItem() { Name = "Germany", Code = "DE" },
-        new TItem() { Name = "Greenland", Code = "GL" },
-        new TItem() { Name = "Hong Kong", Code = "HK" },
-        new TItem() { Name = "India", Code = "IN" },
-        new TItem() { Name = "Italy", Code = "IT" }
-    };
 
     private async Task AddItem()
     {

@@ -3,6 +3,7 @@ using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Shared;
+using System.Globalization;
 
 namespace Backend.Services.OrderService
 {
@@ -65,12 +66,12 @@ namespace Backend.Services.OrderService
                            .FirstOrDefaultAsync(o => o.Id == orderId);
 
 
-            foreach (var orderItem in orderDetail.OrderItems)
-            {
+            //foreach (var orderItem in orderDetail.OrderItems)
+            //{
 
-                orderItem.Product = await _context.Products.FirstOrDefaultAsync(p => p.Id == orderItem.ProductId);
-                Console.WriteLine(orderItem.Product.Title);
-            }
+            //    orderItem.Product = await _context.Products.FirstOrDefaultAsync(p => p.Id == orderItem.ProductId);
+            //    Console.WriteLine(orderItem.Product.Title);
+            //}
 
             return new ServiceResponse<Order> { Data = orderDetail, Message = "Get Order successful!" };
         }
@@ -147,6 +148,64 @@ namespace Backend.Services.OrderService
             catch (Exception ex)
             {
                 return new ServiceResponse<List<OrderDto>> { Data = null, Message = ex.Message, Success = false };
+            }
+        }
+
+        public async Task<ServiceResponse<List<ChartsSeller>>> GetChartsSeller()
+        {
+            try
+            {
+                var orders= await _context.Orders
+                    .Include(o => o.OrderItems)
+                    .ThenInclude (o => o.Product)
+                    .ToListAsync();
+
+
+                List<ChartsSeller> chartsSellers = new List<ChartsSeller>();
+               foreach(Order order in orders)
+                {
+                   
+                    foreach(OrderItem orderItem in order.OrderItems)
+                    {
+                        chartsSellers.Add(new ChartsSeller
+                        {
+                            Date = DateTime.ParseExact(order.OrderDate.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture),
+      
+                            ProductTitle = orderItem.Product.Title,
+                            Quantity  = orderItem.Quantity
+                        });
+                     }
+
+                }
+                var groupedByDate = chartsSellers.GroupBy(c => new { c.ProductTitle,  c.Date })
+                    .Select( s =>new ChartsSeller
+                    {
+                        Date = s.Key.Date,
+                        ProductTitle = s.Key.ProductTitle,
+                        Quantity = s.Sum(i=>i.Quantity)
+                    })
+                    ;
+
+
+                List<ChartsSeller> chartsSellersRes = new List<ChartsSeller>();
+                foreach (var theGroup in groupedByDate)
+                {
+                    Console.WriteLine(
+                    "{0} are {1}s",
+                     theGroup.Date, theGroup.Quantity);
+                    chartsSellersRes.Add(new ChartsSeller()
+                    {
+                        Date= theGroup.Date,
+                        Quantity = theGroup.Quantity,
+                        ProductTitle = theGroup.ProductTitle
+                    });
+                }
+
+                return new ServiceResponse<List<ChartsSeller>> { Data = chartsSellersRes, Message = "Get Orsers successful!" };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<List<ChartsSeller>> { Data = null, Message = ex.Message, Success = false };
             }
         }
     }

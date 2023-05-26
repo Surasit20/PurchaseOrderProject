@@ -117,5 +117,17 @@ namespace Backend.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("charts/seller")]
+        public async Task<ActionResult<ServiceResponse<ChartsSeller>>> GetChartsSeller()
+        {
+            var response = await _orderService.GetChartsSeller();
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
     }
 }

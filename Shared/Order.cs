@@ -26,6 +26,7 @@ namespace Shared
         public ICollection<OrderItem>? OrderItems { get; set; } 
         public int SupplierId { get; set; }
 
+        //[JsonIgnore]
         public Supplier? Supplier { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         [Required]

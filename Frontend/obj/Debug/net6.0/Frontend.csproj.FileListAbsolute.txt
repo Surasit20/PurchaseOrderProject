@@ -250,3 +250,5 @@ C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Frontend\obj\Debug\net
 C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Frontend\obj\Debug\net6.0\Frontend.pdb
 C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Frontend\obj\Debug\net6.0\Frontend.genruntimeconfig.cache
 C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Frontend\obj\Debug\net6.0\ref\Frontend.dll
+C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Frontend\bin\Debug\net6.0\Syncfusion.Blazor.Charts.dll
+C:\Users\dev01\source\repos\gitclone\PurchaseOrderProject\Frontend\bin\Debug\net6.0\Syncfusion.Blazor.DataVizCommon.dll

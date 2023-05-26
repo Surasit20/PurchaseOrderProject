@@ -1265,6 +1265,31 @@
           "buildMultiTargeting/Syncfusion.Blazor.Calendars.props": {}
         }
       },
+      "Syncfusion.Blazor.Charts/20.3.0.61": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Blazor.Core": "20.3.0.61",
+          "Syncfusion.Blazor.Data": "20.3.0.61",
+          "Syncfusion.Blazor.DataVizCommon": "20.3.0.61",
+          "Syncfusion.PdfExport.Net.Core": "20.3.0.61"
+        },
+        "compile": {
+          "lib/net6.0/Syncfusion.Blazor.Charts.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Syncfusion.Blazor.Charts.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Blazor.Charts.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Syncfusion.Blazor.Charts.props": {}
+        }
+      },
       "Syncfusion.Blazor.Core/20.3.0.61": {
         "type": "package",
         "dependencies": {
@@ -1310,6 +1335,22 @@
         },
         "buildMultiTargeting": {
           "buildMultiTargeting/Syncfusion.Blazor.Data.props": {}
+        }
+      },
+      "Syncfusion.Blazor.DataVizCommon/20.3.0.61": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Blazor.Core": "20.3.0.61"
+        },
+        "compile": {
+          "lib/net6.0/Syncfusion.Blazor.DataVizCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Syncfusion.Blazor.DataVizCommon.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Syncfusion.Blazor.DropDowns/20.3.0.61": {
@@ -3815,6 +3856,30 @@
         "syncfusion_logo.png"
       ]
     },
+    "Syncfusion.Blazor.Charts/20.3.0.61": {
+      "sha512": "FyPQX1qOaVyhrV/q8zewjeLOZleUnYtXGaH3xjL4EdY4CUDGAUfABNBlJgw1FmPkyQFiN5+b9qVj23SXNktBRg==",
+      "type": "package",
+      "path": "syncfusion.blazor.charts/20.3.0.61",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "build/Syncfusion.Blazor.Charts.props",
+        "buildMultiTargeting/Syncfusion.Blazor.Charts.props",
+        "buildTransitive/Syncfusion.Blazor.Charts.props",
+        "lib/net6.0/Syncfusion.Blazor.Charts.dll",
+        "lib/net6.0/Syncfusion.Blazor.Charts.xml",
+        "lib/netstandard2.1/Syncfusion.Blazor.Charts.dll",
+        "lib/netstandard2.1/Syncfusion.Blazor.Charts.xml",
+        "staticwebassets/scripts/sf-accumulation-chart.min.js",
+        "staticwebassets/scripts/sf-chart.min.js",
+        "syncfusion.blazor.charts.20.3.0.61.nupkg.sha512",
+        "syncfusion.blazor.charts.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
     "Syncfusion.Blazor.Core/20.3.0.61": {
       "sha512": "2MLalFWMCZJQIPcBlkaL/GTXqT4oU37ILCVMp/WFwHre4yQWYxCqZc5ZaGnnLI22BBRdv9DYd0iXJY7jJ+MhZg==",
       "type": "package",
@@ -3867,6 +3932,23 @@
         "staticwebassets/scripts/data.min.js",
         "syncfusion.blazor.data.20.3.0.61.nupkg.sha512",
         "syncfusion.blazor.data.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Blazor.DataVizCommon/20.3.0.61": {
+      "sha512": "ASM2mqQr5rkga7VWv8J2b36yCIXEG7Uf2I6gFC5AyUSfQmZxi5vLyKJApOSgxoEYBDRsXUTASuUENd4Q2L0mkQ==",
+      "type": "package",
+      "path": "syncfusion.blazor.datavizcommon/20.3.0.61",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net6.0/Syncfusion.Blazor.DataVizCommon.dll",
+        "lib/net6.0/Syncfusion.Blazor.DataVizCommon.xml",
+        "lib/netstandard2.1/Syncfusion.Blazor.DataVizCommon.dll",
+        "lib/netstandard2.1/Syncfusion.Blazor.DataVizCommon.xml",
+        "syncfusion.blazor.datavizcommon.20.3.0.61.nupkg.sha512",
+        "syncfusion.blazor.datavizcommon.nuspec",
         "syncfusion_logo.png"
       ]
     },
@@ -6059,6 +6141,7 @@
       "DevExpress.Blazor.Reporting.Viewer >= 22.2.6",
       "DevExpress.Reporting.Core >= 22.2.6",
       "Shared >= 1.0.0",
+      "Syncfusion.Blazor.Charts >= 20.3.0.61",
       "Syncfusion.Blazor.Core >= 20.3.0.61",
       "Syncfusion.Blazor.Grid >= 20.3.0.61",
       "Syncfusion.Blazor.Themes >= 20.3.0.61"
@@ -6125,6 +6208,10 @@
           "DevExpress.Reporting.Core": {
             "target": "Package",
             "version": "[22.2.6, )"
+          },
+          "Syncfusion.Blazor.Charts": {
+            "target": "Package",
+            "version": "[20.3.0.61, )"
           },
           "Syncfusion.Blazor.Core": {
             "target": "Package",

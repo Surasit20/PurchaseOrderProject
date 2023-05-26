@@ -99,5 +99,14 @@ namespace Frontend.Services.OrderService
 
             return response.Data;
         }
+
+        public async Task<List<ChartsSeller>> GetChartsSeller()
+        {
+            var response = new ServiceResponse<List<ChartsSeller>>();
+            response = await _http.GetFromJsonAsync<ServiceResponse<List<ChartsSeller>>>($"api/Order/charts/seller");
+
+            return response.Data;
+        }
     }
+    
 }

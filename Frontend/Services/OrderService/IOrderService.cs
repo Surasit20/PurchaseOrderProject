@@ -12,5 +12,6 @@ namespace Frontend.Services.OrderService
         public Task<List<Product>> GetProducts();
         public Task<List<OrderDto>> GetOrders();
         public Task<Order> DeleteOrder(int orderId);
+        public Task<List<ChartsSeller>> GetChartsSeller();
     }
 }

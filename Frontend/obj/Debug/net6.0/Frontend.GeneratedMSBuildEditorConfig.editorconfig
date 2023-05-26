@@ -24,8 +24,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmlsbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/dev01/source/repos/gitclone/PurchaseOrderProject/Frontend/Pages/Charts.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhcnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/dev01/source/repos/gitclone/PurchaseOrderProject/Frontend/Pages/EditOrder.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdE9yZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dev01/source/repos/gitclone/PurchaseOrderProject/Frontend/Shared/ChartSellerItem.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXENoYXJ0U2VsbGVySXRlbS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/dev01/source/repos/gitclone/PurchaseOrderProject/Frontend/Shared/DataGridIndex.razor]

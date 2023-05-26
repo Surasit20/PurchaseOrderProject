@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CHy0tJOUHdQq+fmMOzIRWmmwPmGbi9cKKxveyPbFNxU2o8KaLici981R276PuBdLQ8Lhtr2IlK2uRXn09Pk1qw==",
+  "dgSpecHash": "EzuASto3ue3YgU08gVvQS78M4lLeEpES/SSR5QmPeAmqGl+WIIQbWSXbaV+76tpBbrLArGJCkUZigaG2+vdH8Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\dev01\\source\\repos\\gitclone\\PurchaseOrderProject\\Frontend\\Frontend.csproj",
   "expectedPackageFiles": [
@@ -75,8 +75,10 @@
     "C:\\Users\\dev01\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.buttons\\20.3.0.61\\syncfusion.blazor.buttons.20.3.0.61.nupkg.sha512",
     "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.calendars\\20.3.0.61\\syncfusion.blazor.calendars.20.3.0.61.nupkg.sha512",
+    "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.charts\\20.3.0.61\\syncfusion.blazor.charts.20.3.0.61.nupkg.sha512",
     "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\syncfusion.blazor.core.20.3.0.61.nupkg.sha512",
     "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.data\\20.3.0.61\\syncfusion.blazor.data.20.3.0.61.nupkg.sha512",
+    "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.datavizcommon\\20.3.0.61\\syncfusion.blazor.datavizcommon.20.3.0.61.nupkg.sha512",
     "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.dropdowns\\20.3.0.61\\syncfusion.blazor.dropdowns.20.3.0.61.nupkg.sha512",
     "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.grid\\20.3.0.61\\syncfusion.blazor.grid.20.3.0.61.nupkg.sha512",
     "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.inputs\\20.3.0.61\\syncfusion.blazor.inputs.20.3.0.61.nupkg.sha512",

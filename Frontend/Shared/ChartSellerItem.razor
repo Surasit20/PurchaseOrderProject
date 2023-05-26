@@ -1,0 +1,104 @@
+﻿<h3>ChartSellerItem</h3>
+@using Syncfusion.Blazor.Charts
+@inject NavigationManager NavigationManager
+@inject IOrderService OrderService
+<div class="control-section" align='center'>
+    <SfChart Title="Olympic Medal Counts - RIO" Width="@Width" Theme="@Theme">
+        <ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelIntersectAction="@Label" LabelRotation="@Rotation">
+            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+        </ChartPrimaryXAxis>
+        <ChartPrimaryYAxis Title="Medal Count" Maximum="50" Interval="10">
+            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+        </ChartPrimaryYAxis>
+        <ChartSeriesCollection>
+            <ChartSeries TooltipMappingName="MappingName" DataSource="@ChartPoints" XName="Country" YName="GoldMedal" Name="Gold" ColumnSpacing="0.1" >
+                <ChartMarker>
+                    <ChartDataLabel Visible="false" >
+                        <ChartDataLabelFont FontWeight="600" Color="#ffffff"></ChartDataLabelFont>
+                    </ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+            <ChartSeries TooltipMappingName="MappingName" DataSource="@ChartPoints" XName="Country" YName="SilverMedal" Name="Silver" ColumnSpacing="0.1">
+                <ChartMarker>
+                    <ChartDataLabel Visible="false" >
+                        <ChartDataLabelFont FontWeight="600" Color="#ffffff"></ChartDataLabelFont>
+                    </ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+            <ChartSeries TooltipMappingName="MappingName" DataSource="@ChartPoints" XName="Country" YName="BronzeMedal" Name="Bronze" ColumnSpacing="0.1" >
+                <ChartMarker>
+                    <ChartDataLabel Visible="false" >
+                        <ChartDataLabelFont FontWeight="600" Color="#ffffff"></ChartDataLabelFont>
+                    </ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+        </ChartSeriesCollection>
+        <ChartLegendSettings Visible="true" EnableHighlight="true"></ChartLegendSettings>
+        <ChartTooltipSettings Header="<b>${point.tooltip}</b>" Enable="true" Shared="true"></ChartTooltipSettings>
+    </SfChart>
+</div>
+@if (chartsSellers == null)
+{
+    <p>Loading..</p>
+}
+else
+{
+    @foreach (var i in chartsSellers)
+{
+    <p>วันที่ @i.Date</p>  <p>ชื่อ @i.ProductTitle</p> <p>จำนวน @i.Quantity</p>
+}
+}
+
+@code{
+    private Theme Theme { get; set; }
+    public string Width { get; set; } = "90%";
+    public double Rotation { get; set; } = 0;
+    public LabelIntersectAction Label { get; set; } = LabelIntersectAction.Trim;
+    public List<ColumnChartData> ChartPoints { get; set; } = new List<ColumnChartData>
+    {
+        new ColumnChartData { Country = "GBR", GoldMedal = 27, SilverMedal = 23, BronzeMedal = 17, MappingName = "Great Britain" },
+        new ColumnChartData { Country = "CHN", GoldMedal = 26, SilverMedal = 18, BronzeMedal = 26, MappingName = "China" },
+        new ColumnChartData { Country = "AUS", GoldMedal = 8, SilverMedal = 11, BronzeMedal = 10, MappingName = "Australia" },
+        new ColumnChartData { Country = "RUS", GoldMedal = 19, SilverMedal = 17, BronzeMedal = 20, MappingName = "Russia" },
+        new ColumnChartData { Country = "GER", GoldMedal = 17, SilverMedal = 10, BronzeMedal = 15, MappingName = "Germany" },
+        new ColumnChartData { Country = "UA", GoldMedal = 2, SilverMedal = 5, BronzeMedal = 24, MappingName = "Ukraine" },       
+        new ColumnChartData { Country = "ES", GoldMedal = 7, SilverMedal = 4, BronzeMedal = 6, MappingName = "Spain" },
+        new ColumnChartData { Country = "UZB", GoldMedal = 4, SilverMedal = 2, BronzeMedal = 7, MappingName = "Uzbekistan" },
+        new ColumnChartData { Country = "JPN", GoldMedal = 12, SilverMedal = 8, BronzeMedal = 21, MappingName = "Japan" },
+        new ColumnChartData { Country = "NL", GoldMedal = 8, SilverMedal = 7, BronzeMedal = 4, MappingName = "NetherLand" },
+        new ColumnChartData { Country = "USA", GoldMedal = 46, SilverMedal = 37, BronzeMedal = 38, MappingName = "United States" },
+    };
+
+
+    List<ChartsSeller> chartsSellers { get; set; } 
+    protected override void OnInitialized()
+    {
+        //Theme = ThemeHelper.GetCurrentTheme(NavigationManager.Uri);
+        //if (SampleService.IsDevice)
+        //{
+        //    Label = LabelIntersectAction.None;
+        //    Width = "100%";
+        //    Rotation = -45;
+        //}
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        chartsSellers = await OrderService.GetChartsSeller();
+
+    }
+    public class ColumnChartData
+    {
+        public string Country { get; set; }
+        public double GoldMedal { get; set; }
+        public double SilverMedal { get; set; }
+        public double BronzeMedal { get; set; }
+        public string MappingName { get; set; }
+    }
+}
+@code {
+
+}

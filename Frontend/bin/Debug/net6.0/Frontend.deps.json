@@ -12,6 +12,7 @@
           "DevExpress.Blazor.Reporting.Viewer": "22.2.6",
           "DevExpress.Reporting.Core": "22.2.6",
           "Shared": "1.0.0",
+          "Syncfusion.Blazor.Charts": "20.3.0.61",
           "Syncfusion.Blazor.Core": "20.3.0.61",
           "Syncfusion.Blazor.Grid": "20.3.0.61",
           "Syncfusion.Blazor.Themes": "20.3.0.61"
@@ -724,6 +725,20 @@
           }
         }
       },
+      "Syncfusion.Blazor.Charts/20.3.0.61": {
+        "dependencies": {
+          "Syncfusion.Blazor.Core": "20.3.0.61",
+          "Syncfusion.Blazor.Data": "20.3.0.61",
+          "Syncfusion.Blazor.DataVizCommon": "20.3.0.61",
+          "Syncfusion.PdfExport.Net.Core": "20.3.0.61"
+        },
+        "runtime": {
+          "lib/net6.0/Syncfusion.Blazor.Charts.dll": {
+            "assemblyVersion": "20.3.0.61",
+            "fileVersion": "20.3.0.61"
+          }
+        }
+      },
       "Syncfusion.Blazor.Core/20.3.0.61": {
         "dependencies": {
           "Microsoft.AspNetCore.Components.Web": "6.0.5",
@@ -744,6 +759,17 @@
         },
         "runtime": {
           "lib/net6.0/Syncfusion.Blazor.Data.dll": {
+            "assemblyVersion": "20.3.0.61",
+            "fileVersion": "20.3.0.61"
+          }
+        }
+      },
+      "Syncfusion.Blazor.DataVizCommon/20.3.0.61": {
+        "dependencies": {
+          "Syncfusion.Blazor.Core": "20.3.0.61"
+        },
+        "runtime": {
+          "lib/net6.0/Syncfusion.Blazor.DataVizCommon.dll": {
             "assemblyVersion": "20.3.0.61",
             "fileVersion": "20.3.0.61"
           }
@@ -1784,6 +1810,13 @@
       "path": "syncfusion.blazor.calendars/20.3.0.61",
       "hashPath": "syncfusion.blazor.calendars.20.3.0.61.nupkg.sha512"
     },
+    "Syncfusion.Blazor.Charts/20.3.0.61": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FyPQX1qOaVyhrV/q8zewjeLOZleUnYtXGaH3xjL4EdY4CUDGAUfABNBlJgw1FmPkyQFiN5+b9qVj23SXNktBRg==",
+      "path": "syncfusion.blazor.charts/20.3.0.61",
+      "hashPath": "syncfusion.blazor.charts.20.3.0.61.nupkg.sha512"
+    },
     "Syncfusion.Blazor.Core/20.3.0.61": {
       "type": "package",
       "serviceable": true,
@@ -1797,6 +1830,13 @@
       "sha512": "sha512-xc5UDIPs2CGNj55MLsDq7qkaQmF7SwU+gfZsEHiBZ69zfjzd5gXyDZrXure1ZAIRDMgz5pzZcUukEjMrUIh/BQ==",
       "path": "syncfusion.blazor.data/20.3.0.61",
       "hashPath": "syncfusion.blazor.data.20.3.0.61.nupkg.sha512"
+    },
+    "Syncfusion.Blazor.DataVizCommon/20.3.0.61": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ASM2mqQr5rkga7VWv8J2b36yCIXEG7Uf2I6gFC5AyUSfQmZxi5vLyKJApOSgxoEYBDRsXUTASuUENd4Q2L0mkQ==",
+      "path": "syncfusion.blazor.datavizcommon/20.3.0.61",
+      "hashPath": "syncfusion.blazor.datavizcommon.20.3.0.61.nupkg.sha512"
     },
     "Syncfusion.Blazor.DropDowns/20.3.0.61": {
       "type": "package",

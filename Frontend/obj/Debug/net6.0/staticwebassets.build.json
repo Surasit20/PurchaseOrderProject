@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uXiJc1g612I+xP9TQA8fAUDkONCNWn5EmbmFITS4RkA=",
+  "Hash": "CBNvtdhqnAdCrgLF0gMt8/mHw1LidtLfvOrTT6Vu/kQ=",
   "Source": "Frontend",
   "BasePath": "_content/Frontend",
   "Mode": "Default",
@@ -2293,6 +2293,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.calendars\\20.3.0.61\\staticwebassets\\scripts\\sf-timepicker.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.charts\\20.3.0.61\\staticwebassets\\scripts\\sf-accumulation-chart.min.js",
+      "SourceId": "Syncfusion.Blazor.Charts",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.charts\\20.3.0.61\\staticwebassets\\",
+      "BasePath": "_content/Syncfusion.Blazor.Charts",
+      "RelativePath": "scripts/sf-accumulation-chart.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.charts\\20.3.0.61\\staticwebassets\\scripts\\sf-accumulation-chart.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.charts\\20.3.0.61\\staticwebassets\\scripts\\sf-chart.min.js",
+      "SourceId": "Syncfusion.Blazor.Charts",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.charts\\20.3.0.61\\staticwebassets\\",
+      "BasePath": "_content/Syncfusion.Blazor.Charts",
+      "RelativePath": "scripts/sf-chart.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.charts\\20.3.0.61\\staticwebassets\\scripts\\sf-chart.min.js"
     },
     {
       "Identity": "C:\\Users\\dev01\\.nuget\\packages\\syncfusion.blazor.core\\20.3.0.61\\staticwebassets\\scripts\\compression.min.js",
